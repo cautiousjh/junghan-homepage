@@ -45,6 +45,9 @@ def render_extra(s):
     for item in s.get('items', []):
         heading = link({'url': item['url'], 'label': item['title']}) if item.get('url') else e(item['title'])
         body += f'<article><h3>{heading}</h3><p>{e(item.get("text", ""))}</p></article>'
+    if s.get('icons'):
+        icons = ''.join(f'<li><span role="img" aria-label="{e(i["label"])}" title="{e(i["label"])}">{e(i["symbol"])}</span></li>' for i in s['icons'])
+        body += f'<ul class="interest-icons" aria-label="Other interests">{icons}</ul>'
     return f'<section class="extra-section" id="{s["id"]}" aria-labelledby="{s["id"]}-title"><h2 id="{s["id"]}-title">{e(s["title"])}</h2>{body}</section>'
 
 def page(main, title, path='/'):
@@ -65,6 +68,10 @@ def page(main, title, path='/'):
        css_hash=hashlib.sha256((ROOT/'assets/site.css').read_bytes()).hexdigest()[:10])
 
 bio = ''.join(f'<p>{e(p)}</p>' for p in site['bio'])
+interests = ''
+if site.get('research_interests'):
+    items = ''.join(f'<li><strong>{e(i["title"])}</strong><span>{e(i["description"])}</span></li>' for i in site['research_interests'])
+    interests = f'<section class="research-interests" aria-labelledby="research-interests-title"><h2 id="research-interests-title">Research interests</h2><ul>{items}</ul></section>'
 social = ''.join(link(x) for x in site['links'])
 scholar = next(x for x in site['links'] if x['label'] == 'Google Scholar')
 cv = next(x for x in site['links'] if x['label'] == 'CV')
@@ -74,6 +81,7 @@ main = f'''<section class="profile" id="about" aria-labelledby="profile-name">
     <div class="bio">{bio}</div><div class="profile-links" aria-label="Contact and profiles">{social}</div>
   </div><figure class="portrait"><img src="{e(site['portrait'])}" alt="{e(site['name'])}" width="842" height="1178" fetchpriority="high"></figure>
 </section>
+{interests}
 <section class="publications" id="publications" aria-labelledby="publications-title">
   <div class="section-heading"><h2 id="publications-title">{e(site['publications_heading'])}</h2>{link({'label':'Google Scholar ↗', 'url':scholar['url']})}</div>
   <ol class="publications-list">{''.join(render_paper(p) for p in papers)}</ol>

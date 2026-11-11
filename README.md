@@ -17,6 +17,13 @@ old links. It is not a second homepage.
 | `templates/page.html` | Shared page structure, navigation, metadata and footer |
 | `tools/build_site.py` | Static HTML generator; Python standard library only |
 
+The `bio` array in `content/site.json` contains the introduction: one quoted
+string per paragraph. Edit only the text inside the double quotes, preserve
+the separating commas, and save as UTF-8. `research_interests` holds the four
+CV research areas. `additional_sections` includes Beyond research; its
+`paragraphs` contains the sports sentence and `icons` contains emoji with
+accessible labels. Visible interests use emoji only for drinks, tea and food.
+
 Add a publication by copying an object in `content/publications.json`. Display
 order follows the file. Set `self: true` to emphasize the owner's name and
 `equal: true` for equal contributions. Include only real, public links; an
