@@ -107,3 +107,7 @@ owner-supplied 202611 CV. `content/presentations.json` preserves every entry's
 text, author order, presentation type, and award labels. Entries are grouped by
 year within each section, newest first, with no visible bullets or numbers.
 Edit the JSON for future updates; do not copy CV source documents into this repo.
+Award labels in parentheses are displayed in bold while retaining the CV text.
+
+The Email, Google Scholar and CV links sit beneath the portrait on desktop.
+At widths up to 760px they remain a full-width row below the introduction.

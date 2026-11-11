@@ -103,6 +103,7 @@ def render_presentations():
                 if item['year'] != year:
                     continue
                 text = re.sub(r'Shin, J\. H\.', '<strong>Shin, J. H.</strong>', e(item['text']))
+                text = re.sub(r'(\([^()]*\bAward\))', r'<strong class="presentation-award">\1</strong>', text)
                 entries.append(f'<li>{text}</li>')
             year_id = f'{section["id"]}-{year}'
             groups.append(f'<section class="presentation-year-group" aria-labelledby="{year_id}"><h3 id="{year_id}">{year}</h3><ul role="list">{"".join(entries)}</ul></section>')
@@ -141,8 +142,9 @@ cv = next(x for x in site['links'] if x['label'] == 'CV')
 main = f'''<section class="profile" id="about" aria-labelledby="profile-name">
   <div class="profile-copy"><div class="identity"><h1 id="profile-name">{e(site['name'])}</h1>
     <p class="role">{e(site['role'])}</p><p class="affiliation">{e(site['department'])}<br>{e(site['institution'])}</p></div>
-    <div class="bio">{bio}</div><div class="profile-links" aria-label="Contact and profiles">{social}</div>
-  </div><figure class="portrait"><img src="{e(site['portrait'])}" alt="{e(site['name'])}" width="842" height="1178" fetchpriority="high"></figure>
+    <div class="bio">{bio}</div>
+  </div><div class="profile-aside"><figure class="portrait"><img src="{e(site['portrait'])}" alt="{e(site['name'])}" width="842" height="1178" fetchpriority="high"></figure>
+    <div class="profile-links" aria-label="Contact and profiles">{social}</div></div>
 </section>
 {interests}
 <section class="publications" id="publications" aria-labelledby="publications-title">
