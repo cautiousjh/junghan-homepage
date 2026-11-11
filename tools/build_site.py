@@ -5,11 +5,13 @@ from string import Template
 import hashlib
 import json
 import re
+from datetime import date
 
 ROOT = Path(__file__).resolve().parents[1]
 site = json.loads((ROOT / 'content/site.json').read_text(encoding='utf-8'))
 papers = json.loads((ROOT / 'content/publications.json').read_text(encoding='utf-8'))
 presentations = json.loads((ROOT / 'content/presentations.json').read_text(encoding='utf-8'))
+news = json.loads((ROOT / 'content/news.json').read_text(encoding='utf-8'))
 template = Template((ROOT / 'templates/page.html').read_text(encoding='utf-8'))
 e = escape
 
@@ -22,6 +24,24 @@ def link(item, cls=''):
 
 def link_icon(cls='section-link-icon', size=19):
     return f'<svg class="{cls}" width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>'
+
+def render_news(items):
+    if not items:
+        return ''
+    entries = []
+    for item in sorted(items, key=lambda item: item['date'], reverse=True):
+        month = date.fromisoformat(item['date'] + '-01')
+        label = month.strftime('%b %Y')
+        text = e(item['text'])
+        if item.get('link'):
+            target = e(item['link']['label'])
+            text = text.replace(target, link(item['link']), 1)
+        entries.append(f'<li><time datetime="{e(item["date"])}">{label}</time><p>{text}</p></li>')
+    body = '<ul class="news-list" role="list">' + ''.join(entries[:3]) + '</ul>'
+    if len(entries) > 3:
+        chevron = '<svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>'
+        body += '<details class="news-archive"><summary><span class="news-show-more">Show more</span><span class="news-show-less">Show less</span>' + chevron + '</summary><ul class="news-list" role="list">' + ''.join(entries[3:]) + '</ul></details>'
+    return '<section class="extra-section news-section" id="news" aria-labelledby="news-title"><h2 id="news-title">News</h2>' + body + '</section>'
 
 def render_paper(p):
     authors = []
@@ -88,6 +108,10 @@ def render_extra(s):
             icons = ''.join(f'<span role="img" aria-label="{e(i["label"])}" title="{e(i["label"])}">{e(i["symbol"])}</span>' for i in s['inline_icons'])
             inline = f' <span class="inline-interest-icons">{icons}</span>'
         text = e(paragraph)
+        for icon in s.get('activity_icons', []):
+            marker = e(icon['after'])
+            symbol = f'<span class="activity-icon" aria-hidden="true">{e(icon["symbol"])}</span>'
+            text = text.replace(marker, marker + '&nbsp;' + symbol, 1)
         marker = s.get('inline_icons_after')
         if inline and marker and marker in paragraph:
             before, separator, after = paragraph.partition(marker)
@@ -192,6 +216,7 @@ main = f'''<section class="profile" id="about" aria-labelledby="profile-name">
     <div class="profile-links" aria-label="Contact and profiles">{social}</div></div>
 </section>
 {interests}
+{render_news(news)}
 <section class="publications" id="publications" aria-labelledby="publications-title">
   <div class="section-heading"><h2 id="publications-title">{e(site['publications_heading'])}</h2><div class="section-heading-meta"><p class="contribution-note">* Equal contribution.</p></div></div>
   <ol class="publications-list">{''.join(render_paper(p) for p in papers)}</ol>

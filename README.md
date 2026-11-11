@@ -24,7 +24,7 @@ string per paragraph. Edit only the text inside the double quotes, preserve
 the separating commas, and save as UTF-8. `research_interests` holds the four
 CV research areas. `additional_sections` includes Beyond research; its
 `paragraphs` contains the sports sentence and `icons` contains emoji with
-accessible labels. Food, tea and drinks are written as a sentence. Small wave and diving-mask emoji follow the first hobby sentence via `inline_icons`. Do not use en or em dashes in site copy.
+accessible labels. Food, tea and drinks are written as a sentence. Each sport has one small emoji placed via `activity_icons`. Do not use en or em dashes in site copy.
 
 Add a publication by copying an object in `content/publications.json`. Display
 order follows the file. Set `self: true` to emphasize the owner's name and
@@ -40,6 +40,14 @@ entries without a paper URL use non-clickable images. `full` retains the origina
 figure reference in the source data. Paired figures are stacked on desktop
 and placed side by side below the citation on narrow screens. Entries without
 figures keep the compact year column. Legacy `image` / `image_alt` still work.
+
+News is managed in `content/news.json` and appears before Publications. Each item
+has `date` (`YYYY-MM`) and `text`, with an optional `link` containing `label` and
+`url`. Items sort newest first. The latest three are visible; older items appear
+under a native Show more / Show less disclosure with a chevron. The control is
+omitted when there are three or fewer items. Use only confirmed dates and facts.
+Beyond research uses `activity_icons` with `after` and `symbol` to place one small
+decorative emoji beside each sport while preserving the paragraph text.
 
 To add a simple future section, append an object to `additional_sections` in
 `content/site.json`. It accepts `id`, `title`, `paragraphs` (list of strings),
