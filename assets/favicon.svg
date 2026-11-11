@@ -1,10 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <title>Brain</title>
-  <rect width="64" height="64" rx="12" fill="#fcfcfb"/>
-  <g fill="none" stroke="#275b72" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M30 15C24 9 17 12 16 19C8 18 6 28 11 33C6 40 10 49 18 48C20 56 30 54 30 47Z"/>
-    <path d="M34 15C40 9 47 12 48 19C56 18 58 28 53 33C58 40 54 49 46 48C44 56 34 54 34 47Z"/>
-    <path d="M17 20C24 19 25 23 24 27M12 33C19 29 24 33 23 37M18 47C16 40 20 38 25 40"/>
-    <path d="M47 20C40 19 39 23 40 27M52 33C45 29 40 33 41 37M46 47C48 40 44 38 39 40"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Lateral brain network</title>
+  <desc>A side-view brain with a broad cerebral dome, a small posterior cerebellum and a descending brainstem, drawn as connected blue nodes.</desc>
+  <rect x="0" y="0" width="64" height="64" rx="12" fill="white"/>
+  <g stroke="#1565C0" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Cerebral outline: posterior left, frontal pole right. -->
+    <path d="M7 34 Q6 25 14 19 Q21 10 29 10 Q41 8 48 16 Q57 19 58 29 Q61 37 53 40 Q47 43 39 39"/>
+    <path d="M7 34 Q5 42 12 46 Q17 52 25 48 L31 56 L35 55 L34 45 L39 39"/>
+    <!-- The cerebellar upper edge and brainstem notch keep the outline asymmetric. -->
+    <path d="M7 34 L19 35 L28 40 L25 48 M28 40 L34 45"/>
+    <!-- Sparse, irregular cerebral connections. -->
+    <path d="M14 19 L24 25 L29 10 M24 25 L42 26 L48 16 M42 26 L58 29 M24 25 L19 35 M39 39 L42 26"/>
+  </g>
+  <g fill="#1565C0">
+    <circle cx="7" cy="34" r="2.8"/><circle cx="14" cy="19" r="2.8"/>
+    <circle cx="29" cy="10" r="2.8"/><circle cx="48" cy="16" r="2.8"/>
+    <circle cx="58" cy="29" r="2.8"/><circle cx="53" cy="40" r="2.8"/>
+    <circle cx="39" cy="39" r="2.8"/><circle cx="24" cy="25" r="3"/>
+    <circle cx="42" cy="26" r="3"/><circle cx="19" cy="35" r="2.6"/>
+    <circle cx="12" cy="46" r="2.6"/><circle cx="25" cy="48" r="2.6"/>
+    <circle cx="33" cy="55" r="2.6"/>
   </g>
 </svg>
