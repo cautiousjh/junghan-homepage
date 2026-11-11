@@ -184,7 +184,23 @@
           "degree": "B.S. in Life Sciences & Computer Science and Engineering (Double Major)",
           "institution": "Pohang University of Science and Technology (POSTECH)",
           "location": "Pohang, Korea",
-          "date": "Feb 2018"
+          "date": "Feb 2018",
+          "projects": [
+            {
+              "title": "Korean sign language recognition (OpenCV, machine learning)",
+              "url": "https://www.youtube.com/watch?v=FBf6sopFmz0"
+            },
+            {
+              "title": "Sports posture advisor (Unity, Kinect)",
+              "url": "https://www.youtube.com/watch?v=vRSV8stM4uE"
+            },
+            {
+              "title": "Molecular neurophysiology: Cell-based screening for growth factor receptor agonists"
+            },
+            {
+              "title": "Structural bioinformatics: Analysis of human disease phenotypes in protein networks"
+            }
+          ]
         }
       ]
     },
