@@ -88,7 +88,7 @@ main = f'''<section class="profile" id="about" aria-labelledby="profile-name">
   <p class="contribution-note">* Equal contribution.</p>
 </section>'''
 main += ''.join(render_extra(s) for s in site.get('additional_sections', []))
-(ROOT/'index.html').write_text(page(main, site['name'] + ' · Cognitive Neuroscience'), encoding='utf-8')
+(ROOT/'index.html').write_text(page(main, site['site_title']), encoding='utf-8')
 (ROOT/'cv').mkdir(exist_ok=True)
 cv_html = f'''<section class="cv-page"><h1>Curriculum vitae</h1><p>{e(site['name'])}<br>{e(site['role'])}, {e(site['institution'])}</p>
 {link({'label':'View CV ↗', 'url':cv['url']}, 'primary-link')}<p><a href="/#publications">Browse publications</a></p></section>'''

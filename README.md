@@ -17,6 +17,7 @@ old links. It is not a second homepage.
 | `templates/page.html` | Shared page structure, navigation, metadata and footer |
 | `tools/build_site.py` | Static HTML generator; Python standard library only |
 
+The `site_title` field controls the homepage browser and sharing-preview title.
 The `bio` array in `content/site.json` contains the introduction: one quoted
 string per paragraph. Edit only the text inside the double quotes, preserve
 the separating commas, and save as UTF-8. `research_interests` holds the four
