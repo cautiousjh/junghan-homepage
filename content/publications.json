@@ -1,0 +1,36 @@
+[
+  {
+    "id": "subiculum-navigation-training",
+    "title": "A spatiotemporal scaffold in the human subiculum supports episodic memory and its enhancement through navigation training",
+    "authors": [{"name": "Jung Han Shin", "self": true}, {"name": "V. P. Bingman"}, {"name": "S. A. Lee"}],
+    "year": "In press", "venue": "Nature Communications", "details": "", "links": []
+  },
+  {
+    "id": "spatial-boundary-structures",
+    "title": "The visual scene network and hippocampus represent spatial boundary structures for temporal episodic memory organization",
+    "authors": [{"name": "Y. J. Rah", "equal": true}, {"name": "Jung Han Shin", "self": true, "equal": true}, {"name": "S. A. Lee"}],
+    "year": "2025", "venue": "Journal of Cognitive Neuroscience", "details": "37(11), 1873–1888",
+    "links": [{"label": "Paper", "url": "https://doi.org/10.1162/jocn_a_02229"}]
+  },
+  {
+    "id": "anterior-thalamus",
+    "title": "Stimulation of the anterior thalamus modulates behavior in multiple cognitive domains",
+    "authors": [{"name": "H. N. Song"}, {"name": "Y. J. Rah"}, {"name": "I. H. Ryu"}, {"name": "Jung Han Shin", "self": true}, {"name": "S. Lee"}, {"name": "Y.-M. Shon"}, {"name": "S. A. Lee"}],
+    "year": "2025", "venue": "NeuroImage", "details": "310, 121101",
+    "links": [{"label": "Paper", "url": "https://doi.org/10.1016/j.neuroimage.2025.121101"}]
+  },
+  {
+    "id": "prefrontal-working-memory",
+    "title": "Wearable functional near-infrared spectroscopy for measuring dissociable activation dynamics of prefrontal cortex subregions during working memory",
+    "authors": [{"name": "Jung Han Shin", "self": true}, {"name": "M. J. Kang"}, {"name": "S. A. Lee"}],
+    "year": "2024", "venue": "Human Brain Mapping", "details": "45(2), e26619",
+    "links": [{"label": "Paper", "url": "https://doi.org/10.1002/hbm.26619"}]
+  },
+  {
+    "id": "macaque-memory-replay",
+    "title": "Behavioral evidence for memory replay of video episodes in the macaque",
+    "authors": [{"name": "S. Zuo", "equal": true}, {"name": "L. Wang", "equal": true}, {"name": "Jung Han Shin", "self": true}, {"name": "Y. Cai"}, {"name": "B. Zhang"}, {"name": "S. W. Lee"}, {"name": "K. Appiah"}, {"name": "Y.-D. Zhou"}, {"name": "S. C. Kwok"}],
+    "year": "2020", "venue": "eLife", "details": "9, e54519",
+    "links": [{"label": "Paper", "url": "https://doi.org/10.7554/eLife.54519"}]
+  }
+]

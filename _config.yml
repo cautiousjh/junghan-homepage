@@ -1,44 +1,5 @@
-# Site Settings
+# Domain metadata. Pages serves static HTML via .nojekyll.
+# Build with python tools/build_site.py
 title: "Jung Han Shin"
 url: "https://junghan.shin.ai.kr"
 baseurl: ""
-
-# Theme Settings
-remote_theme: abhinavs/moonwalk
-
-# Profile & Navigation (Moonwalk specific)
-heading: "Jung Han Shin"
-subheading: "A cognitive neuroscientist bridging human cognition and artificial intelligence."
-
-
-theme_config:
-  appearance: "dark" # can be "light", "dark" or "auto"
-  show_copyright: false
-  show_footer: false
-
-# Menu items (Appears below the profile)
-nav_items:
-  - name: Home
-    link: /
-  - name: CV
-    link: /cv/
-  - name: Email
-    link: "mailto:cautiousjh@snu.ac.kr"
-
-# Blog Settings
-show_excerpts: true
-date_format: "%B %d, %Y"
-
-# Build Settings
-markdown: kramdown
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-
-# Exclude leftovers
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - README.md

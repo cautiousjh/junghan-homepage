@@ -1,18 +1,69 @@
-# Junghan Shin's homepage
+# Jung Han Shin — personal homepage
 
-The canonical website is **https://junghan.shin.ai.kr**.
+Canonical website: **https://junghan.shin.ai.kr**
 
-Edit website content only in `cautiousjh/junghan-homepage`.
-GitHub Pages publishes `main` from `/` using Jekyll. Keep `_config.yml`'s
-`url` and `CNAME` aligned with the canonical domain; `baseurl` stays empty.
+This is the only repository for homepage content. The separate
+`cautiousjh/personal_page` repository retains `neuro.ai.kr` solely to redirect
+old links. It is not a second homepage.
 
-Gabia DNS: `junghan.shin.ai.kr` CNAME `cautiousjh.github.io.`.
+## Edit content
 
-The former site at `https://neuro.ai.kr` remains served by
-`cautiousjh/personal_page` solely to redirect old links, including paths,
-query strings, and fragments. It is not a second editable homepage.
-Both domains retain their own GitHub Pages HTTPS configuration.
-The legacy redirect is client-side, not an HTTP 301 response.
+| File | Edit here |
+| --- | --- |
+| `content/site.json` | Name, affiliation, biography paragraphs, navigation, contact/CV links |
+| `content/publications.json` | Publication entries, author order, equal contributions, status and links |
+| `assets/site.css` | Responsive layout, light palette and typography |
+| `assets/images/jung-han-shin.png` | Original supplied portrait (visual crop is CSS only) |
+| `templates/page.html` | Shared page structure, navigation, metadata and footer |
+| `tools/build_site.py` | Static HTML generator; Python standard library only |
 
-Migration: 2026-11-11 (Asia/Seoul). This repository preserves the original
-site's Git history through commit `a11cccd` before changing its domain.
+Add a publication by copying an object in `content/publications.json`. Display
+order follows the file. Set `self: true` to emphasize the owner's name and
+`equal: true` for equal contributions. Include only real, public links; an
+empty links array is appropriate for an in-press paper without a public URL.
+
+To add a simple future section, append an object to `additional_sections` in
+`content/site.json`. It accepts `id`, `title`, `paragraphs` (list of strings),
+and `items` (objects with `title`, `text`, and optional `url`). Add its anchor
+to `navigation` when needed. Empty sections are not shown. More specialized
+sections can have their own renderer in the build script.
+
+## Build and publish
+
+From this repository:
+
+```powershell
+python tools/build_site.py
+python -m http.server 8765 --bind 127.0.0.1
+```
+
+Preview at http://127.0.0.1:8765. Review the change, then commit the content,
+templates, assets **and generated HTML** together and push to `origin/main`.
+GitHub Pages publishes the root of `main`; `.nojekyll` serves static files.
+Do not edit generated `index.html`, `cv/index.html`, `404.html`, `sitemap.xml`,
+or `robots.txt` directly. No theme package or JavaScript framework is required.
+
+Keep `content/site.json`'s `url`, `CNAME`, and `_config.yml` aligned. The domain
+is `junghan.shin.ai.kr`, not the default account-level github.io URL.
+The existing Google Analytics property is retained.
+
+## Content decisions — 2026-11-11
+
+- Official name: Jung Han Shin. Light appearance; an al-folio-inspired academic
+  layout with publications directly below the short introduction.
+- No GitHub profile link, posts, news feed or unpublished manuscript list.
+- Bio combines the supplied research profile with the author's LinkedIn
+  description of methods and the two-way connection between neuroscience and AI.
+- CV link keeps the existing stable Google Drive file ID. CV source documents
+  and versioned PDFs are maintained separately, not committed here.
+- JOCN DOI `10.1162/jocn_a_02229` uses the final 2025 citation
+  (37(11), 1873–1888; Crossref and PubMed PMID 39106162), rather than the CV's 2024 year.
+- NeuroImage DOI `10.1016/j.neuroimage.2025.121101` uses the publisher's final
+  title, “Stimulation of the anterior thalamus modulates behavior in multiple
+  cognitive domains”.
+- The Nature Communications article remains **In press**, as in the supplied CV;
+  no unverified DOI/PDF button is displayed.
+
+The original site's Git history is retained. The legacy domain preserves HTTPS
+and redirects in the browser, including paths, query strings and fragments;
+it does not return an HTTP 301 response.
