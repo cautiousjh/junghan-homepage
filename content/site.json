@@ -14,31 +14,58 @@
     "I aim to connect neuroscience and AI in both directions: translating principles of human memory into brain-inspired AI, while using AI to better understand and augment human cognition."
   ],
   "research_interests": [
-    {"title": "Human episodic memory", "description": "Hippocampal mechanisms, spatiotemporal memory, and event segmentation"},
-    {"title": "Human and artificial memory", "description": "Semantic and concept representations, event organization, and retrieval"},
-    {"title": "Brain-inspired AI", "description": "Translating principles of human cognition into artificial intelligence"},
-    {"title": "Cognitive augmentation", "description": "Enhancing memory and creativity through training and human–AI interaction"}
+    {
+      "title": "Human episodic memory",
+      "description": "Hippocampal mechanisms, spatiotemporal memory, and event segmentation"
+    },
+    {
+      "title": "Human and artificial memory",
+      "description": "Semantic and concept representations, event organization, and retrieval"
+    },
+    {
+      "title": "Brain-inspired AI",
+      "description": "Translating principles of human cognition into artificial intelligence"
+    },
+    {
+      "title": "Cognitive augmentation",
+      "description": "Enhancing memory and creativity through training and human-AI interaction"
+    }
   ],
   "links": [
-    {"label": "Email", "url": "mailto:cautiousjh@snu.ac.kr"},
-    {"label": "Google Scholar", "url": "https://scholar.google.com/citations?user=tAw1VZwAAAAJ&hl=en"},
-    {"label": "CV", "url": "https://drive.google.com/file/d/12o9VEQjNbDq_iieLeEdzwA9HywopnuXc/view?usp=drive_link"}
+    {
+      "label": "Email",
+      "url": "mailto:cautiousjh@snu.ac.kr"
+    },
+    {
+      "label": "Google Scholar",
+      "url": "https://scholar.google.com/citations?user=tAw1VZwAAAAJ&hl=en"
+    },
+    {
+      "label": "CV",
+      "url": "https://drive.google.com/file/d/12o9VEQjNbDq_iieLeEdzwA9HywopnuXc/view?usp=drive_link"
+    }
   ],
   "navigation": [
-    {"label": "About", "url": "/#about"},
-    {"label": "Publications", "url": "/#publications"},
-    {"label": "CV", "url": "https://drive.google.com/file/d/12o9VEQjNbDq_iieLeEdzwA9HywopnuXc/view?usp=drive_link"}
+    {
+      "label": "About",
+      "url": "/#about"
+    },
+    {
+      "label": "Publications",
+      "url": "/#publications"
+    },
+    {
+      "label": "CV",
+      "url": "https://drive.google.com/file/d/12o9VEQjNbDq_iieLeEdzwA9HywopnuXc/view?usp=drive_link"
+    }
   ],
   "publications_heading": "Publications",
   "additional_sections": [
     {
       "id": "beyond-research",
       "title": "Beyond research",
-      "paragraphs": ["Outside research, I enjoy staying active—especially working out, swimming, badminton, and scuba diving."],
-      "icons": [
-        {"symbol": "🥂", "label": "Drinks"},
-        {"symbol": "🍵", "label": "Tea"},
-        {"symbol": "🍽️", "label": "Food"}
+      "paragraphs": [
+        "Outside research, I enjoy staying active, especially working out, swimming, badminton, and scuba diving. I also enjoy good food, tea, and drinks."
       ]
     }
   ],

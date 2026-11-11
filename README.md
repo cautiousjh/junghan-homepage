@@ -1,4 +1,4 @@
-# Jung Han Shin — personal homepage
+# Jung Han Shin - personal homepage
 
 Canonical website: **https://junghan.shin.ai.kr**
 
@@ -23,7 +23,7 @@ string per paragraph. Edit only the text inside the double quotes, preserve
 the separating commas, and save as UTF-8. `research_interests` holds the four
 CV research areas. `additional_sections` includes Beyond research; its
 `paragraphs` contains the sports sentence and `icons` contains emoji with
-accessible labels. Visible interests use emoji only for drinks, tea and food.
+accessible labels. Food, tea and drinks are written as a sentence. A water-themed emoji is pending the owner's choice. Do not use en or em dashes in site copy.
 
 Add a publication by copying an object in `content/publications.json`. Display
 order follows the file. Set `self: true` to emphasize the owner's name and
@@ -55,7 +55,7 @@ Keep `content/site.json`'s `url`, `CNAME`, and `_config.yml` aligned. The domain
 is `junghan.shin.ai.kr`, not the default account-level github.io URL.
 The existing Google Analytics property is retained.
 
-## Content decisions — 2026-11-11
+## Content decisions - 2026-11-11
 
 - Official name: Jung Han Shin. Light appearance; an al-folio-inspired academic
   layout with publications directly below the short introduction.
@@ -65,7 +65,7 @@ The existing Google Analytics property is retained.
 - CV link keeps the existing stable Google Drive file ID. CV source documents
   and versioned PDFs are maintained separately, not committed here.
 - JOCN DOI `10.1162/jocn_a_02229` uses the final 2025 citation
-  (37(11), 1873–1888; Crossref and PubMed PMID 39106162), rather than the CV's 2024 year.
+  (37(11), 1873-1888; Crossref and PubMed PMID 39106162), rather than the CV's 2024 year.
 - NeuroImage DOI `10.1016/j.neuroimage.2025.121101` uses the publisher's final
   title, “Stimulation of the anterior thalamus modulates behavior in multiple
   cognitive domains”.
