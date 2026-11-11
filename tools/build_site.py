@@ -100,7 +100,7 @@ def render_extra(s):
     if s.get('icons'):
         icons = ''.join(f'<li><span role="img" aria-label="{e(i["label"])}" title="{e(i["label"])}">{e(i["symbol"])}</span></li>' for i in s['icons'])
         body += f'<ul class="interest-icons" aria-label="Other interests">{icons}</ul>'
-    classes = 'extra-section compact-section' if s.get('style') in ('compact-list', 'education') else 'extra-section'
+    classes = 'extra-section compact-section' if s.get('style') == 'compact-list' else 'extra-section'
     return f'<section class="{classes}" id="{s["id"]}" aria-labelledby="{s["id"]}-title"><h2 id="{s["id"]}-title">{e(s["title"])}</h2>{body}</section>'
 
 def render_presentations():
