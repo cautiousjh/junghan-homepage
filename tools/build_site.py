@@ -20,6 +20,9 @@ def link(item, cls=''):
     external = ' target="_blank" rel="noopener noreferrer"' if url.startswith('https://') else ''
     return f'<a href="{e(url)}" class="{cls}"{external}>{e(item["label"])}</a>'
 
+def link_icon(cls='section-link-icon', size=19):
+    return f'<svg class="{cls}" width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>'
+
 def render_paper(p):
     authors = []
     for a in p['authors']:
@@ -29,8 +32,12 @@ def render_paper(p):
         if a.get('equal'):
             name += '<sup aria-label="equal contribution">*</sup>'
         authors.append(name)
-    title = link({'url': p['links'][0]['url'], 'label': p['title']}) if p['links'] else e(p['title'])
-    links = ''.join(link(x, 'paper-link') for x in p['links'])
+    title = e(p['title'])
+    if p['links']:
+        beginning, separator, last_word = p['title'].rpartition(' ')
+        label = e(beginning + separator) + f'<span class="paper-title-tail">{e(last_word)}{link_icon("paper-title-icon", 14)}</span>'
+        title = link({'url': p['links'][0]['url'], 'label': p['title']}).replace(e(p['title']) + '</a>', label + '</a>')
+    links = ''.join(link(x, 'paper-link') for x in p['links'][1:])
     links = f'<div class="paper-links">{links}</div>' if links else ''
     year_class = ' forthcoming' if p['year'] == 'In press' else ''
     details = ', ' + e(p['details']) if p.get('details') else ''
@@ -49,7 +56,7 @@ def render_extra(s):
         raise ValueError('Section IDs must use lowercase letters, numbers and hyphens')
     if s.get('style') == 'section-link':
         heading = link({'url': s['url'], 'label': s['title']}, 'section-heading-link')
-        icon = '<svg class="section-link-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>'
+        icon = link_icon()
         heading = heading.replace(e(s['title']) + '</a>', f'<span class="section-link-label">{e(s["title"])}</span>{icon}</a>')
         return f'<section class="extra-section link-section" id="{s["id"]}" aria-labelledby="{s["id"]}-title"><h2 id="{s["id"]}-title">{heading}</h2></section>'
     body = ''
@@ -164,9 +171,8 @@ main = f'''<section class="profile" id="about" aria-labelledby="profile-name">
 </section>
 {interests}
 <section class="publications" id="publications" aria-labelledby="publications-title">
-  <div class="section-heading"><h2 id="publications-title">{e(site['publications_heading'])}</h2>{link({'label':'Google Scholar ↗', 'url':scholar['url']})}</div>
+  <div class="section-heading"><h2 id="publications-title">{e(site['publications_heading'])}</h2><div class="section-heading-meta">{link({'label':'Google Scholar ↗', 'url':scholar['url']})}<p class="contribution-note">* Equal contribution.</p></div></div>
   <ol class="publications-list">{''.join(render_paper(p) for p in papers)}</ol>
-  <p class="contribution-note">* Equal contribution.</p>
 </section>'''
 main += ''.join(render_extra(s) for s in site.get('additional_sections', []))
 (ROOT/'index.html').write_text(page(main, site['site_title']), encoding='utf-8')
