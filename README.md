@@ -97,10 +97,10 @@ it does not return an HTTP 301 response.
 
 ## Sharing image and hobby paragraph
 
-The sharing image is the owner-selected first color set, option 04: muted lavender and slate blue. It is stored as `assets/images/brain-network-share-v3-lavender.png`, copied from `../design/og-colors/20261111/color-04.png`. This is distinct from the later pastel-v2 variants. Earlier image assets are retained.
+The owner selected the green human/brain and blue human-shaped network illustration with a soft flowing connection on 2026-11-12. It is stored as `assets/images/human-ai-flow-share-20261112.png`, copied without image changes from `../design/mri-thumbnail-20261111/selected-human-ai-flow-20261112.png`. Earlier image assets are retained.
 `sharing_image` in `content/site.json` controls Open Graph and large-image
 Twitter/X cards independently of the on-page portrait. Original dimensions
-are 1734 by 907 (1.912:1), and the PNG is about 1.13 MB.
+are 1672 by 940, and the PNG is about 1.70 MB.
 
 Beyond research uses one paragraph, starting with "Outside research,".
 `inline_icons_after` identifies the sentence after which the small water
@@ -153,4 +153,4 @@ data, labels, or source slide files were edited.
 
 Education items may include `projects` with a `title` and optional `url`. These render as small 12px bullets under the degree. Undergraduate demo links were supplied by the owner; the two laboratory research topics come from the November 2026 CV.
 
-Sharing images: `sharing_image` is optional. With no override, Open Graph and Twitter use the existing `portrait`, with a compact Twitter summary card. The prior brain graphic is retained as an unused asset; local MRI materials are not part of the public repository.
+Sharing images: `sharing_image` is optional. The current override uses the approved human/AI illustration and a large-image card. With no override, Open Graph and Twitter fall back to the existing `portrait`, with a compact Twitter summary card. Previous graphics are retained as unused assets; local MRI materials are not part of the public repository.

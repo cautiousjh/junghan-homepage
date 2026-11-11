@@ -8,6 +8,12 @@
   "institution": "Seoul National University",
   "email": "cautiousjh@snu.ac.kr",
   "portrait": "/assets/images/jung-han-shin.png",
+  "sharing_image": {
+    "path": "/assets/images/human-ai-flow-share-20261112.png",
+    "alt": "A green human profile with a brain faces a blue human-shaped network, connected by flowing lines.",
+    "width": 1672,
+    "height": 940
+  },
   "bio": [
     "I investigate how human and artificial systems represent, organize, and use knowledge and experience, with broader implications for brain-inspired AI and cognitive augmentation.",
     "My research spans hippocampal episodic memory, event segmentation, and cognitive training. I integrate behavioral experiments, neuroimaging, and computational approaches to understand how memories are formed and organized.",
