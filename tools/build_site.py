@@ -43,7 +43,20 @@ def render_paper(p):
     details = ', ' + e(p['details']) if p.get('details') else ''
     visual = f'<div class="publication-year{year_class}">{e(p["year"])}</div>'
     classes = 'publication'
-    if p.get('image'):
+    if p.get('figures'):
+        classes += ' has-thumbnail'
+        thumbnails = []
+        for figure in p['figures']:
+            alt = e(figure['alt'])
+            if figure.get('crop'):
+                crop = ' '.join(str(v) for v in figure['crop'])
+                img = f'<svg viewBox="{crop}" width="180" height="108" role="img" aria-label="{alt}"><image href="{e(figure["thumbnail"])}" width="{figure["width"]}" height="{figure["height"]}"/></svg>'
+            else:
+                img = f'<img src="{e(figure["thumbnail"])}" alt="{alt}" width="{figure["width"]}" height="{figure["height"]}" loading="lazy" decoding="async">'
+            thumbnails.append(f'<a class="figure-link" href="{e(figure["full"])}" target="_blank" rel="noopener noreferrer" aria-label="View full figure: {alt}">{img}</a>')
+        multi = ' multi' if len(thumbnails) > 1 else ''
+        visual = f'<div class="publication-visual"><div class="publication-figures{multi}">{"".join(thumbnails)}</div>{visual}</div>'
+    elif p.get('image'):
         classes += ' has-thumbnail'
         visual = f'<div class="publication-visual"><img src="{e(p["image"])}" alt="{e(p.get("image_alt", p["title"]))}" width="120" height="80" loading="lazy">{visual}</div>'
     return f'''<li class="{classes}" id="{e(p['id'])}">
