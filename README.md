@@ -18,7 +18,7 @@ old links. It is not a second homepage.
 | `templates/page.html` | Shared page structure, navigation, metadata and footer |
 | `tools/build_site.py` | Static HTML generator; Python standard library only |
 
-The `site_title` field controls the homepage browser and sharing-preview title.
+The `site_title` field controls the homepage browser and sharing-preview title, currently `Jung Han Shin · Neuro x AI`.
 The `bio` array in `content/site.json` contains the introduction: one quoted
 string per paragraph. Edit only the text inside the double quotes, preserve
 the separating commas, and save as UTF-8. `research_interests` holds the four
@@ -97,7 +97,7 @@ it does not return an HTTP 301 response.
 
 ## Sharing image and hobby paragraph
 
-The owner selected the green human/brain and blue human-shaped network illustration with a soft flowing connection on 2026-11-12. It is stored as `assets/images/human-ai-flow-share-20261112.png`, copied without image changes from `../design/mri-thumbnail-20261111/selected-human-ai-flow-20261112.png`. Earlier image assets are retained.
+The owner selected variant 2 (head-focused network) on 2026-11-12: a green person with an anatomical brain facing a blue person with a network only inside the head, joined by a soft flowing connection. It is stored as `assets/images/human-ai-head-network-share-20261112.png`, copied without image changes from `../design/mri-thumbnail-20261111/right-network-02-head-focused-20261112.png`. Earlier image assets are retained.
 `sharing_image` in `content/site.json` controls Open Graph and large-image
 Twitter/X cards independently of the on-page portrait. Original dimensions
 are 1672 by 940, and the PNG is about 1.70 MB.
