@@ -41,7 +41,8 @@ def render_paper(p):
     links = f'<div class="paper-links">{links}</div>' if links else ''
     year_class = ' forthcoming' if p['year'] == 'In press' else ''
     details = ', ' + e(p['details']) if p.get('details') else ''
-    visual = f'<div class="publication-year{year_class}">{e(p["year"])}</div>'
+    year = f'<div class="publication-year{year_class}">{e(p["year"])}</div>'
+    visual = year
     classes = 'publication'
     if p.get('figures'):
         classes += ' has-thumbnail'
@@ -53,16 +54,20 @@ def render_paper(p):
                 img = f'<svg viewBox="{crop}" width="180" height="108" role="img" aria-label="{alt}"><image href="{e(figure["thumbnail"])}" width="{figure["width"]}" height="{figure["height"]}"/></svg>'
             else:
                 img = f'<img src="{e(figure["thumbnail"])}" alt="{alt}" width="{figure["width"]}" height="{figure["height"]}" loading="lazy" decoding="async">'
-            thumbnails.append(f'<a class="figure-link" href="{e(figure["full"])}" target="_blank" rel="noopener noreferrer" aria-label="View full figure: {alt}">{img}</a>')
+            if p['links']:
+                thumbnails.append(f'<a class="publication-thumbnail figure-link" href="{e(p["links"][0]["url"])}" target="_blank" rel="noopener noreferrer" aria-label="Read paper: {e(p["title"])}">{img}</a>')
+            else:
+                thumbnails.append(f'<div class="publication-thumbnail">{img}</div>')
         multi = ' multi' if len(thumbnails) > 1 else ''
-        visual = f'<div class="publication-visual"><div class="publication-figures{multi}">{"".join(thumbnails)}</div>{visual}</div>'
+        visual = f'<div class="publication-visual"><div class="publication-figures{multi}">{"".join(thumbnails)}</div></div>'
     elif p.get('image'):
         classes += ' has-thumbnail'
-        visual = f'<div class="publication-visual"><img src="{e(p["image"])}" alt="{e(p.get("image_alt", p["title"]))}" width="120" height="80" loading="lazy">{visual}</div>'
-    return f'''<li class="{classes}" id="{e(p['id'])}">
-      {visual}
-      <article><h3>{title}</h3><p class="authors">{', '.join(authors)}</p>
-        <p class="venue"><cite>{e(p['venue'])}</cite>{details}</p>{links}</article></li>'''
+        visual = f'<div class="publication-visual"><img src="{e(p["image"])}" alt="{e(p.get("image_alt", p["title"]))}" width="120" height="80" loading="lazy"></div>'
+    has_thumbnail = bool(p.get('figures') or p.get('image'))
+    article = f'''<article>{year if has_thumbnail else ''}<h3>{title}</h3><p class="authors">{', '.join(authors)}</p>
+        <p class="venue"><cite>{e(p['venue'])}</cite>{details}</p>{links}</article>'''
+    content = article + visual if has_thumbnail else visual + article
+    return f'<li class="{classes}" id="{e(p["id"])}">{content}</li>'
 
 def render_extra(s):
     if not re.fullmatch(r'[a-z][a-z0-9-]*', s['id']):

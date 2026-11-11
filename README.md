@@ -30,11 +30,13 @@ Add a publication by copying an object in `content/publications.json`. Display
 order follows the file. Set `self: true` to emphasize the owner's name and
 `equal: true` for equal contributions. Include only real, public links; an
 empty links array is appropriate for an in-press paper without a public URL.
-The `figures` array adds a 180px thumbnail column. Each entry has `thumbnail`,
+The `figures` array adds a 180px thumbnail column to the right of the citation. Each entry has `thumbnail`,
 `full`, `width`, `height`, and `alt`. Optional `crop: [x, y, width, height]`
 selects a displayed region through an SVG viewBox without editing the PNG.
-The full original figure opens when a thumbnail is clicked. Two training figures
-are stacked on desktop and placed side by side on narrow screens. Entries without
+Thumbnails link to the same paper URL as the title when one is available;
+entries without a paper URL use non-clickable images. `full` retains the original
+figure reference in the source data. Two training figures are stacked on desktop
+and placed side by side below the citation on narrow screens. Entries without
 figures keep the compact year column. Legacy `image` / `image_alt` still work.
 
 To add a simple future section, append an object to `additional_sections` in
@@ -132,8 +134,8 @@ its text is underlined only on hover or keyboard focus. Body typography is retai
 The owner supplied source images in `../figures/`; original PNGs and PPTX files
 stay there. Public copies are under `assets/images/publications/`.
 Training uses the navigation-task region of `2026_training1.png` and the
-hippocampal-subfield region of `2026_training2.png`, with both full figures linked.
+hippocampal-subfield region of `2026_training2.png`, retaining both full originals.
 Boundary and fNIRS thumbnails are the original `ppt/media/image1.png` pictures
-extracted from their supplied PPTX files; their full PNG overviews are linked.
+extracted from their supplied PPTX files; their full PNG overviews are retained.
 DBS and macaque thumbnails use the supplied PNGs in full. No scientific pixels,
 data, labels, or source slide files were edited.
