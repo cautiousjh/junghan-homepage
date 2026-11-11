@@ -162,7 +162,7 @@ def render_extra(s):
                 advisors = '; '.join(e(a['role']) + ': ' + link({'url': a['url'], 'label': a['name']}) + ' (' + e(a['affiliation']) + ')' for a in item['advisors'])
                 details += f'<p>{advisors}</p>'
             if item.get('projects'):
-                projects = ''.join('<li>' + (link({'url': project['url'], 'label': project['title']}) if project.get('url') else e(project['title'])) + '</li>' for project in item['projects'])
+                projects = ''.join('<li>' + (link({'url': project['url'], 'label': project['title']}).replace('</a>', link_icon('education-project-icon', 11) + '</a>') if project.get('url') else e(project['title'])) + '</li>' for project in item['projects'])
                 details += '<ul class="education-projects" aria-label="Undergraduate research and projects">' + projects + '</ul>'
             entries.append(f'<li class="education-entry"><div class="education-heading"><h3>{e(item["degree"])}</h3><span class="education-date">{e(item["date"])}</span></div>{details}</li>')
         body += '<ul class="education-list" role="list">' + ''.join(entries) + '</ul>'
