@@ -68,19 +68,73 @@
       "items": [
         {
           "title": "Spontaneous grid-like chunking in human spatial navigation behavior and its neural correlates in hippocampal subregions.",
-          "status": "In revision"
+          "status": "In revision",
+          "authors": [
+            {
+              "name": "J. Y. Kim",
+              "equal": true
+            },
+            {
+              "name": "Jung Han Shin",
+              "self": true,
+              "equal": true
+            },
+            {
+              "name": "S. A. Lee"
+            }
+          ],
+          "venue": "Nature Communications"
         },
         {
-          "title": "Semantic boundaries facilitate efficient temporal memory organization through cortico-hippocampal segmentation."
+          "title": "Semantic boundaries facilitate efficient temporal memory organization through cortico-hippocampal segmentation.",
+          "authors": [
+            {
+              "name": "Jung Han Shin",
+              "self": true
+            },
+            {
+              "name": "S. A. Lee"
+            }
+          ]
         },
         {
-          "title": "SPARK: From foundation model representations to controllable interventions for creative ideation."
+          "title": "SPARK: From foundation model representations to controllable interventions for creative ideation.",
+          "authors": [
+            {
+              "name": "Jung Han Shin",
+              "self": true
+            },
+            {
+              "name": "S. Jun"
+            },
+            {
+              "name": "S. A. Lee"
+            }
+          ]
         },
         {
-          "title": "Event horizon in silico: A causal event-boundary direction aligned with human memory."
+          "title": "Event horizon in silico: A causal event-boundary direction aligned with human memory.",
+          "authors": [
+            {
+              "name": "Jung Han Shin",
+              "self": true
+            },
+            {
+              "name": "S. A. Lee"
+            }
+          ]
         },
         {
-          "title": "Conceptual space in large language models."
+          "title": "Conceptual space in large language models.",
+          "authors": [
+            {
+              "name": "Jung Han Shin",
+              "self": true
+            },
+            {
+              "name": "S. A. Lee"
+            }
+          ]
         }
       ]
     },

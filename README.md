@@ -93,3 +93,7 @@ Work in progress entries live in content/site.json under additional_sections.
 Keep manuscript titles verbatim from the supplied CV. The first is marked
 In revision; do not imply publication or add unconfirmed target journals.
 The favicon is a simple teal brain outline, with a content-hashed URL.
+
+Work in progress shows all authors in CV order, with equal contributions
+marked. The owner authorized the first manuscript's Nature Communications
+venue label; its status remains In revision until formal acceptance.
