@@ -65,7 +65,18 @@
       "id": "beyond-research",
       "title": "Beyond research",
       "paragraphs": [
-        "Outside research, I enjoy staying active, especially working out, swimming, badminton, and scuba diving. I also enjoy good food, tea, and drinks."
+        "I enjoy staying active, especially working out, swimming, badminton, and scuba diving.",
+        "I also enjoy good food, tea, and drinks."
+      ],
+      "inline_icons": [
+        {
+          "symbol": "🌊",
+          "label": "Ocean"
+        },
+        {
+          "symbol": "🤿",
+          "label": "Scuba diving"
+        }
       ]
     }
   ],

@@ -33,15 +33,26 @@ def render_paper(p):
     links = f'<div class="paper-links">{links}</div>' if links else ''
     year_class = ' forthcoming' if p['year'] == 'In press' else ''
     details = ', ' + e(p['details']) if p.get('details') else ''
-    return f'''<li class="publication" id="{e(p['id'])}">
-      <div class="publication-year{year_class}">{e(p['year'])}</div>
+    visual = f'<div class="publication-year{year_class}">{e(p["year"])}</div>'
+    classes = 'publication'
+    if p.get('image'):
+        classes += ' has-thumbnail'
+        visual = f'<div class="publication-visual"><img src="{e(p["image"])}" alt="{e(p.get("image_alt", p["title"]))}" width="120" height="80" loading="lazy">{visual}</div>'
+    return f'''<li class="{classes}" id="{e(p['id'])}">
+      {visual}
       <article><h3>{title}</h3><p class="authors">{', '.join(authors)}</p>
         <p class="venue"><cite>{e(p['venue'])}</cite>{details}</p>{links}</article></li>'''
 
 def render_extra(s):
     if not re.fullmatch(r'[a-z][a-z0-9-]*', s['id']):
         raise ValueError('Section IDs must use lowercase letters, numbers and hyphens')
-    body = ''.join(f'<p>{e(p)}</p>' for p in s.get('paragraphs', []))
+    body = ''
+    for index, paragraph in enumerate(s.get('paragraphs', [])):
+        inline = ''
+        if index == 0 and s.get('inline_icons'):
+            icons = ''.join(f'<span role="img" aria-label="{e(i["label"])}" title="{e(i["label"])}">{e(i["symbol"])}</span>' for i in s['inline_icons'])
+            inline = f' <span class="inline-interest-icons">{icons}</span>'
+        body += f'<p>{e(paragraph)}{inline}</p>'
     for item in s.get('items', []):
         heading = link({'url': item['url'], 'label': item['title']}) if item.get('url') else e(item['title'])
         body += f'<article><h3>{heading}</h3><p>{e(item.get("text", ""))}</p></article>'

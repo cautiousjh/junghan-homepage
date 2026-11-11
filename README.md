@@ -23,12 +23,14 @@ string per paragraph. Edit only the text inside the double quotes, preserve
 the separating commas, and save as UTF-8. `research_interests` holds the four
 CV research areas. `additional_sections` includes Beyond research; its
 `paragraphs` contains the sports sentence and `icons` contains emoji with
-accessible labels. Food, tea and drinks are written as a sentence. A water-themed emoji is pending the owner's choice. Do not use en or em dashes in site copy.
+accessible labels. Food, tea and drinks are written as a sentence. Small wave and diving-mask emoji follow the first hobby sentence via `inline_icons`. Do not use en or em dashes in site copy.
 
 Add a publication by copying an object in `content/publications.json`. Display
 order follows the file. Set `self: true` to emphasize the owner's name and
 `equal: true` for equal contributions. Include only real, public links; an
 empty links array is appropriate for an in-press paper without a public URL.
+Optional `image` and `image_alt` fields add a 120 by 80 pixel thumbnail. Leave
+them absent until a real paper figure is available; no empty slot is reserved.
 
 To add a simple future section, append an object to `additional_sections` in
 `content/site.json`. It accepts `id`, `title`, `paragraphs` (list of strings),
