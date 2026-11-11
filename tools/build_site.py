@@ -72,7 +72,11 @@ def render_extra(s):
                 if author.get('equal'):
                     name += '<sup aria-label="equal contribution">*</sup>'
                 author_names.append(name)
-            authors = f'<span class="authors work-authors">{", ".join(author_names)}.</span> ' if author_names else ''
+            if len(author_names) > 2:
+                author_text = ', '.join(author_names[:-1]) + ', &amp; ' + author_names[-1]
+            else:
+                author_text = ' &amp; '.join(author_names)
+            authors = f'<span class="authors work-authors">{author_text}.</span> ' if author_names else ''
             venue = f'<cite>{e(item["venue"])}</cite>' if item.get('venue') else ''
             details = f' <span class="work-details">{venue}{status}</span>' if venue or status else ''
             entries.append(f'<li>{authors}{e(item["title"])}{details}</li>')
