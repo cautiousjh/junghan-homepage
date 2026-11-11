@@ -152,3 +152,5 @@ DBS and macaque thumbnails use the supplied PNGs in full. No scientific pixels,
 data, labels, or source slide files were edited.
 
 Education items may include `projects` with a `title` and optional `url`. These render as small 12px bullets under the degree. Undergraduate demo links were supplied by the owner; the two laboratory research topics come from the November 2026 CV.
+
+Sharing images: `sharing_image` is optional. With no override, Open Graph and Twitter use the existing `portrait`, with a compact Twitter summary card. The prior brain graphic is retained as an unused asset; local MRI materials are not part of the public repository.

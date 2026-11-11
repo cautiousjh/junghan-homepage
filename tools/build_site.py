@@ -195,7 +195,8 @@ def render_presentations():
     return '<div class="presentations-page"><h1>Presentations</h1>' + ''.join(sections) + '</div>'
 
 def page(main, title, path='/'):
-    sharing = site['sharing_image']
+    sharing = site.get('sharing_image') or {'path': site['portrait'], 'alt': site['name']}
+    sharing_size_meta = '\n  '.join(f'<meta property="og:image:{dimension}" content="{int(sharing[dimension])}">' for dimension in ('width', 'height') if dimension in sharing)
     structured = {'@context': 'https://schema.org', '@type': 'Person', 'name': site['name'],
                   'jobTitle': site['role'], 'url': site['url'], 'image': site['url'] + site['portrait'],
                   'affiliation': {'@type': 'Organization', 'name': site['institution']}}
@@ -208,7 +209,8 @@ def page(main, title, path='/'):
   <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{ga}');</script>'''
     return template.substitute(title=e(title), description=e(site['description']), canonical=e(site['url'] + path),
        sharing_image_url=e(site['url'] + sharing['path']), sharing_image_alt=e(sharing['alt']),
-       sharing_image_width=sharing['width'], sharing_image_height=sharing['height'],
+       sharing_size_meta=sharing_size_meta,
+       sharing_card='summary_large_image' if site.get('sharing_image') else 'summary',
        name=e(site['name']), email=e(site['email']),
        navigation=''.join(link(x).replace('<a ', '<a aria-current="page" ', 1) if x['url'] == path else link(x) for x in site['navigation']), main=main,
        structured_data=json.dumps(structured, ensure_ascii=False).replace('<', '\\u003c'), analytics=analytics,
