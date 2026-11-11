@@ -110,10 +110,12 @@
           "authors": [
             {
               "name": "Jung Han Shin",
-              "self": true
+              "self": true,
+              "equal": true
             },
             {
-              "name": "S. Jun"
+              "name": "S. Jun",
+              "equal": true
             },
             {
               "name": "S. A. Lee"
