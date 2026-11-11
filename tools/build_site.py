@@ -82,6 +82,17 @@ def render_extra(s):
             details = f' <span class="work-details">{venue}{status}</span>' if venue or status else ''
             entries.append(f'<li>{authors}{e(item["title"])}{details}</li>')
         body += '<ul class="work-list">' + ''.join(entries) + '</ul>'
+    elif s.get('style') == 'education':
+        entries = []
+        for item in s['items']:
+            details = f'<p>{e(item["institution"])} <span class="education-location">({e(item["location"])})</span></p>'
+            if item.get('thesis'):
+                details += f'<p>Thesis: <cite>{e(item["thesis"])}</cite></p>'
+            if item.get('advisors'):
+                advisors = '; '.join(e(a['role']) + ': ' + link({'url': a['url'], 'label': a['name']}) + ' (' + e(a['affiliation']) + ')' for a in item['advisors'])
+                details += f'<p>{advisors}</p>'
+            entries.append(f'<li class="education-entry"><div class="education-heading"><h3>{e(item["degree"])}</h3><span class="education-date">{e(item["date"])}</span></div>{details}</li>')
+        body += '<ul class="education-list" role="list">' + ''.join(entries) + '</ul>'
     else:
         for item in s.get('items', []):
             heading = link({'url': item['url'], 'label': item['title']}) if item.get('url') else e(item['title'])
@@ -89,7 +100,7 @@ def render_extra(s):
     if s.get('icons'):
         icons = ''.join(f'<li><span role="img" aria-label="{e(i["label"])}" title="{e(i["label"])}">{e(i["symbol"])}</span></li>' for i in s['icons'])
         body += f'<ul class="interest-icons" aria-label="Other interests">{icons}</ul>'
-    classes = 'extra-section compact-section' if s.get('style') == 'compact-list' else 'extra-section'
+    classes = 'extra-section compact-section' if s.get('style') in ('compact-list', 'education') else 'extra-section'
     return f'<section class="{classes}" id="{s["id"]}" aria-labelledby="{s["id"]}-title"><h2 id="{s["id"]}-title">{e(s["title"])}</h2>{body}</section>'
 
 def render_presentations():

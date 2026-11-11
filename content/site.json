@@ -143,6 +143,40 @@
       ]
     },
     {
+      "id": "education",
+      "title": "Education",
+      "style": "education",
+      "items": [
+        {
+          "degree": "Ph.D. in Brain and Cognitive Engineering",
+          "institution": "Korea Advanced Institute of Science and Technology (KAIST)",
+          "location": "Daejeon, Korea",
+          "date": "Aug 2024",
+          "thesis": "Foundational Role of Spatiotemporal Binding in Human Episodic Memory",
+          "advisors": [
+            {
+              "role": "Advisor",
+              "name": "Sang Ah Lee",
+              "affiliation": "Seoul National University",
+              "url": "https://sangahlab.snu.ac.kr/people-professor/"
+            },
+            {
+              "role": "Co-advisor",
+              "name": "Sang Wan Lee",
+              "affiliation": "Brain and Machine Intelligence Laboratory, KAIST",
+              "url": "https://aibrain.kaist.ac.kr/sang-wan-lee"
+            }
+          ]
+        },
+        {
+          "degree": "B.S. in Life Sciences & Computer Science and Engineering (Double Major)",
+          "institution": "Pohang University of Science and Technology (POSTECH)",
+          "location": "Pohang, Korea",
+          "date": "Feb 2018"
+        }
+      ]
+    },
+    {
       "id": "beyond-research",
       "title": "Beyond research",
       "paragraphs": [

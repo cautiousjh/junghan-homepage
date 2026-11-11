@@ -111,3 +111,10 @@ Award labels in parentheses are displayed in bold while retaining the CV text.
 
 The Email, Google Scholar and CV links sit beneath the portrait on desktop.
 At widths up to 760px they remain a full-width row below the introduction.
+
+## Education
+
+Education is a compact homepage section immediately before Beyond research,
+without a navigation tab. It is stored in `additional_sections` in `content/site.json`
+with `style: education`. Degrees, dates, thesis title and advisor affiliations
+follow the 202611 CV; advisor names link to their official profile pages.
