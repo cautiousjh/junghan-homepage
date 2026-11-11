@@ -25,8 +25,10 @@ h1 { margin:0 0 12px; font-size:clamp(35px,4vw,44px); font-weight:400; line-heig
 .portrait img { display:block; width:100%; height:100%; object-fit:cover; object-position:50% 24%; transform:scale(1.17); transform-origin:50% 27%; }
 .profile-aside { min-width:0; }
 .profile-links { display:flex; flex-wrap:wrap; justify-content:center; gap:8px 14px; margin-top:15px; }
-.profile-links a { font-size:13px; font-weight:600; text-decoration:none; border-bottom:1px solid #aac0ca; padding-bottom:1px; }
-.profile-links a:hover { border-color:var(--accent); }
+.profile-links a { display:inline-flex; align-items:center; gap:5px; font-size:13px; font-weight:500; color:#424c54; text-decoration:none; white-space:nowrap; }
+.profile-links a:hover,.profile-links a:focus-visible { color:var(--accent); }
+.profile-links a:hover span { text-decoration:underline; text-underline-offset:4px; }
+.profile-link-icon { display:block; width:15px; height:15px; flex:none; }
 .publications { margin-top:54px; }
 .section-heading { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:10px 20px; border-bottom:1px solid var(--section-rule); padding-bottom:13px; margin-bottom:4px; }
 h2 { font-size:26px; font-weight:500; line-height:1.3; letter-spacing:-.45px; margin:0; }

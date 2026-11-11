@@ -25,6 +25,17 @@ def link(item, cls=''):
 def link_icon(cls='section-link-icon', size=19):
     return f'<svg class="{cls}" width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>'
 
+def profile_link(item):
+    paths = {
+        'Email': '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/>',
+        'Google Scholar': '<path d="m2 9 10-6 10 6-10 6-10-6Zm4 3v6c3 3 9 3 12 0v-6M22 9v8"/>',
+        'CV': '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6Zm0 0v6h6M8 13h8M8 17h6"/>',
+        'LinkedIn': '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M11 17v-7M11 13a3 3 0 0 1 6 0v4"/><circle cx="7" cy="7" r=".7" fill="currentColor" stroke="none"/>',
+    }
+    shape = paths.get(item['label'], '')
+    icon = f'<svg class="profile-link-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{shape}</svg>' if shape else ''
+    return link(item).replace(e(item['label']) + '</a>', icon + '<span>' + e(item['label']) + '</span></a>')
+
 def render_news(items):
     if not items:
         return ''
@@ -205,7 +216,7 @@ interests = ''
 if site.get('research_interests'):
     items = ''.join(f'<li><strong>{e(i["title"])}</strong><span>{e(i["description"])}</span></li>' for i in site['research_interests'])
     interests = f'<section class="research-interests" aria-labelledby="research-interests-title"><h2 id="research-interests-title">Research interests</h2><ul>{items}</ul></section>'
-social = ''.join(link(x) for x in site['links'])
+social = ''.join(profile_link(x) for x in site['links'])
 scholar = next(x for x in site['links'] if x['label'] == 'Google Scholar')
 cv = next(x for x in site['links'] if x['label'] == 'CV')
 main = f'''<section class="profile" id="about" aria-labelledby="profile-name">
