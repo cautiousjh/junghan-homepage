@@ -150,3 +150,5 @@ extracted from the supplied PPTX with a result region from the full PNG overview
 Boundary shows the task and brain results; fNIRS shows the device and delay/decision results.
 DBS and macaque thumbnails use the supplied PNGs in full. No scientific pixels,
 data, labels, or source slide files were edited.
+
+Education items may include `projects` with a `title` and optional `url`. These render as small 12px bullets under the degree. Undergraduate demo links were supplied by the owner; the two laboratory research topics come from the November 2026 CV.
