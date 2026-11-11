@@ -52,7 +52,14 @@ def render_extra(s):
         if index == 0 and s.get('inline_icons'):
             icons = ''.join(f'<span role="img" aria-label="{e(i["label"])}" title="{e(i["label"])}">{e(i["symbol"])}</span>' for i in s['inline_icons'])
             inline = f' <span class="inline-interest-icons">{icons}</span>'
-        body += f'<p>{e(paragraph)}{inline}</p>'
+        text = e(paragraph)
+        marker = s.get('inline_icons_after')
+        if inline and marker and marker in paragraph:
+            before, separator, after = paragraph.partition(marker)
+            text = e(before + separator) + inline + e(after)
+        else:
+            text += inline
+        body += f'<p>{text}</p>'
     for item in s.get('items', []):
         heading = link({'url': item['url'], 'label': item['title']}) if item.get('url') else e(item['title'])
         body += f'<article><h3>{heading}</h3><p>{e(item.get("text", ""))}</p></article>'
@@ -62,6 +69,7 @@ def render_extra(s):
     return f'<section class="extra-section" id="{s["id"]}" aria-labelledby="{s["id"]}-title"><h2 id="{s["id"]}-title">{e(s["title"])}</h2>{body}</section>'
 
 def page(main, title, path='/'):
+    sharing = site['sharing_image']
     structured = {'@context': 'https://schema.org', '@type': 'Person', 'name': site['name'],
                   'jobTitle': site['role'], 'url': site['url'], 'image': site['url'] + site['portrait'],
                   'affiliation': {'@type': 'Organization', 'name': site['institution']}}
@@ -73,7 +81,9 @@ def page(main, title, path='/'):
         analytics = f'''<script async src="https://www.googletagmanager.com/gtag/js?id={ga}"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{ga}');</script>'''
     return template.substitute(title=e(title), description=e(site['description']), canonical=e(site['url'] + path),
-       portrait_url=e(site['url'] + site['portrait']), name=e(site['name']), email=e(site['email']),
+       sharing_image_url=e(site['url'] + sharing['path']), sharing_image_alt=e(sharing['alt']),
+       sharing_image_width=sharing['width'], sharing_image_height=sharing['height'],
+       name=e(site['name']), email=e(site['email']),
        navigation=''.join(link(x) for x in site['navigation']), main=main,
        structured_data=json.dumps(structured, ensure_ascii=False).replace('<', '\\u003c'), analytics=analytics,
        css_hash=hashlib.sha256((ROOT/'assets/site.css').read_bytes()).hexdigest()[:10])

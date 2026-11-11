@@ -77,3 +77,14 @@ The existing Google Analytics property is retained.
 The original site's Git history is retained. The legacy domain preserves HTTPS
 and redirects in the browser, including paths, query strings and fragments;
 it does not return an HTTP 301 response.
+
+## Sharing image and hobby paragraph
+
+The selected sharing image is concept 03, a brain/network line illustration.
+`sharing_image` in `content/site.json` controls Open Graph and large-image
+Twitter/X cards independently of the on-page portrait. Original dimensions
+are 1734 by 907 (1.912:1), and the PNG is about 1.13 MB.
+
+Beyond research uses one paragraph, starting with "Outside research,".
+`inline_icons_after` identifies the sentence after which the small water
+emoji are inserted. If editing that sentence, update the marker too.
