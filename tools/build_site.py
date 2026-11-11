@@ -63,6 +63,7 @@ def render_paper(p):
         if a.get('equal'):
             name += '<sup aria-label="equal contribution">*</sup>'
         authors.append(name)
+    author_text = ', '.join(authors[:-1]) + ', &amp; ' + authors[-1] if len(authors) > 2 else ' &amp; '.join(authors)
     title = e(p['title'])
     if p['links']:
         beginning, separator, last_word = p['title'].rpartition(' ')
@@ -99,7 +100,7 @@ def render_paper(p):
         classes += ' has-thumbnail'
         visual = f'<div class="publication-visual"><img src="{e(p["image"])}" alt="{e(p.get("image_alt", p["title"]))}" width="120" height="80" loading="lazy"></div>'
     has_thumbnail = bool(p.get('figures') or p.get('image'))
-    article = f'''<article>{year if has_thumbnail else ''}<h3>{title}</h3><p class="authors">{', '.join(authors)}</p>
+    article = f'''<article>{year if has_thumbnail else ''}<h3>{title}</h3><p class="authors">{author_text}</p>
         <p class="venue"><cite>{e(p['venue'])}</cite>{details}</p>{links}</article>'''
     content = article + visual if has_thumbnail else visual + article
     return f'<li class="{classes}" id="{e(p["id"])}">{content}</li>'
