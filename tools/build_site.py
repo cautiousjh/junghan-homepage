@@ -171,7 +171,7 @@ main = f'''<section class="profile" id="about" aria-labelledby="profile-name">
 </section>
 {interests}
 <section class="publications" id="publications" aria-labelledby="publications-title">
-  <div class="section-heading"><h2 id="publications-title">{e(site['publications_heading'])}</h2><div class="section-heading-meta">{link({'label':'Google Scholar ↗', 'url':scholar['url']})}<p class="contribution-note">* Equal contribution.</p></div></div>
+  <div class="section-heading"><h2 id="publications-title">{e(site['publications_heading'])}</h2><div class="section-heading-meta"><p class="contribution-note">* Equal contribution.</p></div></div>
   <ol class="publications-list">{''.join(render_paper(p) for p in papers)}</ol>
 </section>'''
 main += ''.join(render_extra(s) for s in site.get('additional_sections', []))
