@@ -143,6 +143,12 @@
       ]
     },
     {
+      "id": "presentations",
+      "title": "Presentations",
+      "style": "section-link",
+      "url": "/presentations/"
+    },
+    {
       "id": "education",
       "title": "Education",
       "style": "education",

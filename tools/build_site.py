@@ -47,6 +47,10 @@ def render_paper(p):
 def render_extra(s):
     if not re.fullmatch(r'[a-z][a-z0-9-]*', s['id']):
         raise ValueError('Section IDs must use lowercase letters, numbers and hyphens')
+    if s.get('style') == 'section-link':
+        heading = link({'url': s['url'], 'label': s['title']}, 'section-heading-link')
+        heading = heading.replace('</a>', '<span aria-hidden="true">→</span></a>')
+        return f'<section class="extra-section link-section" id="{s["id"]}" aria-labelledby="{s["id"]}-title"><h2 id="{s["id"]}-title">{heading}</h2></section>'
     body = ''
     for index, paragraph in enumerate(s.get('paragraphs', [])):
         inline = ''
