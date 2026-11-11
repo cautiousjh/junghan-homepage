@@ -118,3 +118,7 @@ Education is a compact homepage section immediately before Beyond research,
 without a navigation tab. It is stored in `additional_sections` in `content/site.json`
 with `style: education`. Degrees, dates, thesis title and advisor affiliations
 follow the 202611 CV; advisor names link to their official profile pages.
+
+Homepage section headings use a shared size, weight and thin divider. The
+Presentations heading links to the separate page with an inline SVG link icon;
+its text is underlined only on hover or keyboard focus. Body typography is retained.

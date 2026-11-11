@@ -49,7 +49,8 @@ def render_extra(s):
         raise ValueError('Section IDs must use lowercase letters, numbers and hyphens')
     if s.get('style') == 'section-link':
         heading = link({'url': s['url'], 'label': s['title']}, 'section-heading-link')
-        heading = heading.replace('</a>', '<span aria-hidden="true">→</span></a>')
+        icon = '<svg class="section-link-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>'
+        heading = heading.replace(e(s['title']) + '</a>', f'<span class="section-link-label">{e(s["title"])}</span>{icon}</a>')
         return f'<section class="extra-section link-section" id="{s["id"]}" aria-labelledby="{s["id"]}-title"><h2 id="{s["id"]}-title">{heading}</h2></section>'
     body = ''
     for index, paragraph in enumerate(s.get('paragraphs', [])):
