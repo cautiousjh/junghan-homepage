@@ -12,6 +12,7 @@ old links. It is not a second homepage.
 | --- | --- |
 | `content/site.json` | Name, affiliation, biography paragraphs, navigation, contact/CV links |
 | `content/publications.json` | Publication entries, author order, equal contributions, status and links |
+| `content/presentations.json` | Invited talks and conference presentations, with original CV text and year |
 | `assets/site.css` | Responsive layout, light palette and typography |
 | `assets/images/jung-han-shin.png` | Original supplied portrait (visual crop is CSS only) |
 | `templates/page.html` | Shared page structure, navigation, metadata and footer |
@@ -50,7 +51,7 @@ python -m http.server 8765 --bind 127.0.0.1
 Preview at http://127.0.0.1:8765. Review the change, then commit the content,
 templates, assets **and generated HTML** together and push to `origin/main`.
 GitHub Pages publishes the root of `main`; `.nojekyll` serves static files.
-Do not edit generated `index.html`, `cv/index.html`, `404.html`, `sitemap.xml`,
+Do not edit generated `index.html`, `cv/index.html`, `presentations/index.html`, `404.html`, `sitemap.xml`,
 or `robots.txt` directly. No theme package or JavaScript framework is required.
 
 Keep `content/site.json`'s `url`, `CNAME`, and `_config.yml` aligned. The domain
@@ -80,7 +81,7 @@ it does not return an HTTP 301 response.
 
 ## Sharing image and hobby paragraph
 
-The sharing image is the owner-selected attachment showing a soft brain on the left connected to a network on the right, stored as brain-network-share-v2.png. This supersedes the previously mismatched concept 03 selection.
+The sharing image is the owner-selected first color set, option 04: muted lavender and slate blue. It is stored as `assets/images/brain-network-share-v3-lavender.png`, copied from `../design/og-colors/20261111/color-04.png`. This is distinct from the later pastel-v2 variants. Earlier image assets are retained.
 `sharing_image` in `content/site.json` controls Open Graph and large-image
 Twitter/X cards independently of the on-page portrait. Original dimensions
 are 1734 by 907 (1.912:1), and the PNG is about 1.13 MB.
@@ -97,3 +98,12 @@ The favicon is a simple teal brain outline, with a content-hashed URL.
 Work in progress shows all authors in CV order, with equal contributions
 marked. The owner authorized the first manuscript's Nature Communications
 venue label; its status remains In revision until formal acceptance.
+
+## Presentations
+
+The separate `/presentations/` page is linked in the top navigation. It contains
+the six invited talks and lectures and 33 conference presentations from the
+owner-supplied 202611 CV. `content/presentations.json` preserves every entry's
+text, author order, presentation type, and award labels. Entries are grouped by
+year within each section, newest first, with no visible bullets or numbers.
+Edit the JSON for future updates; do not copy CV source documents into this repo.

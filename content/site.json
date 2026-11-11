@@ -55,6 +55,10 @@
       "url": "/#publications"
     },
     {
+      "label": "Presentations",
+      "url": "/presentations/"
+    },
+    {
       "label": "CV",
       "url": "https://drive.google.com/file/d/12o9VEQjNbDq_iieLeEdzwA9HywopnuXc/view?usp=drive_link"
     }
@@ -159,9 +163,9 @@
   ],
   "analytics_id": "G-2C2X8QPR7K",
   "sharing_image": {
-    "path": "/assets/images/brain-network-share-v2.png",
+    "path": "/assets/images/brain-network-share-v3-lavender.png",
     "width": 1734,
     "height": 907,
-    "alt": "A softly rendered human brain connected to a blue-green network"
+    "alt": "A translucent lavender brain connected to a soft slate-blue network"
   }
 }

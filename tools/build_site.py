@@ -9,6 +9,7 @@ import re
 ROOT = Path(__file__).resolve().parents[1]
 site = json.loads((ROOT / 'content/site.json').read_text(encoding='utf-8'))
 papers = json.loads((ROOT / 'content/publications.json').read_text(encoding='utf-8'))
+presentations = json.loads((ROOT / 'content/presentations.json').read_text(encoding='utf-8'))
 template = Template((ROOT / 'templates/page.html').read_text(encoding='utf-8'))
 e = escape
 
@@ -91,6 +92,23 @@ def render_extra(s):
     classes = 'extra-section compact-section' if s.get('style') == 'compact-list' else 'extra-section'
     return f'<section class="{classes}" id="{s["id"]}" aria-labelledby="{s["id"]}-title"><h2 id="{s["id"]}-title">{e(s["title"])}</h2>{body}</section>'
 
+def render_presentations():
+    sections = []
+    for section in presentations['sections']:
+        years = dict.fromkeys(item['year'] for item in section['items'])
+        groups = []
+        for year in years:
+            entries = []
+            for item in section['items']:
+                if item['year'] != year:
+                    continue
+                text = re.sub(r'Shin, J\. H\.', '<strong>Shin, J. H.</strong>', e(item['text']))
+                entries.append(f'<li>{text}</li>')
+            year_id = f'{section["id"]}-{year}'
+            groups.append(f'<section class="presentation-year-group" aria-labelledby="{year_id}"><h3 id="{year_id}">{year}</h3><ul role="list">{"".join(entries)}</ul></section>')
+        sections.append(f'<section class="presentation-section" aria-labelledby="{e(section["id"])}"><h2 id="{e(section["id"])}">{e(section["title"])}</h2>{"".join(groups)}</section>')
+    return '<div class="presentations-page"><h1>Presentations</h1>' + ''.join(sections) + '</div>'
+
 def page(main, title, path='/'):
     sharing = site['sharing_image']
     structured = {'@context': 'https://schema.org', '@type': 'Person', 'name': site['name'],
@@ -107,7 +125,7 @@ def page(main, title, path='/'):
        sharing_image_url=e(site['url'] + sharing['path']), sharing_image_alt=e(sharing['alt']),
        sharing_image_width=sharing['width'], sharing_image_height=sharing['height'],
        name=e(site['name']), email=e(site['email']),
-       navigation=''.join(link(x) for x in site['navigation']), main=main,
+       navigation=''.join(link(x).replace('<a ', '<a aria-current="page" ', 1) if x['url'] == path else link(x) for x in site['navigation']), main=main,
        structured_data=json.dumps(structured, ensure_ascii=False).replace('<', '\\u003c'), analytics=analytics,
        css_hash=hashlib.sha256((ROOT/'assets/site.css').read_bytes()).hexdigest()[:10],
        favicon_hash=hashlib.sha256((ROOT/'assets/favicon.svg').read_bytes()).hexdigest()[:10])
@@ -138,8 +156,10 @@ main += ''.join(render_extra(s) for s in site.get('additional_sections', []))
 cv_html = f'''<section class="cv-page"><h1>Curriculum vitae</h1><p>{e(site['name'])}<br>{e(site['role'])}, {e(site['institution'])}</p>
 {link({'label':'View CV ↗', 'url':cv['url']}, 'primary-link')}<p><a href="/#publications">Browse publications</a></p></section>'''
 (ROOT/'cv/index.html').write_text(page(cv_html, 'CV · ' + site['name'], '/cv/'), encoding='utf-8')
+(ROOT/'presentations').mkdir(exist_ok=True)
+(ROOT/'presentations/index.html').write_text(page(render_presentations(), 'Presentations · ' + site['name'], '/presentations/'), encoding='utf-8')
 not_found = '<section class="cv-page"><h1>Page not found</h1><p>The page you are looking for may have moved.</p><a href="/">Return to the homepage</a></section>'
 (ROOT/'404.html').write_text(page(not_found, 'Page not found · ' + site['name'], '/404.html'), encoding='utf-8')
-(ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join(f'<url><loc>{e(site["url"] + p)}</loc></url>' for p in ['/', '/cv/']) + '</urlset>\n', encoding='utf-8')
+(ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join(f'<url><loc>{e(site["url"] + p)}</loc></url>' for p in ['/', '/cv/', '/presentations/']) + '</urlset>\n', encoding='utf-8')
 (ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+site['url']+'/sitemap.xml\n', encoding='utf-8')
-print(f'Built homepage, CV, 404, sitemap and robots.txt with {len(papers)} publications.')
+print(f'Built homepage, CV, presentations, 404, sitemap and robots.txt with {len(papers)} publications and {sum(len(s["items"]) for s in presentations["sections"])} presentations.')
