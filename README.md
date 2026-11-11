@@ -32,10 +32,12 @@ order follows the file. Set `self: true` to emphasize the owner's name and
 empty links array is appropriate for an in-press paper without a public URL.
 The `figures` array adds a 180px thumbnail column to the right of the citation. Each entry has `thumbnail`,
 `full`, `width`, `height`, and `alt`. Optional `crop: [x, y, width, height]`
-selects a displayed region through an SVG viewBox without editing the PNG.
+selects a displayed region through an SVG viewBox and clipPath without editing the PNG.
+Optional `mask_rects: [[x, y, width, height]]` adds white display-only rectangles
+inside that crop; training uses one to hide a clipped text fragment at the lower left.
 Thumbnails link to the same paper URL as the title when one is available;
 entries without a paper URL use non-clickable images. `full` retains the original
-figure reference in the source data. Two training figures are stacked on desktop
+figure reference in the source data. Paired figures are stacked on desktop
 and placed side by side below the citation on narrow screens. Entries without
 figures keep the compact year column. Legacy `image` / `image_alt` still work.
 
@@ -135,7 +137,8 @@ The owner supplied source images in `../figures/`; original PNGs and PPTX files
 stay there. Public copies are under `assets/images/publications/`.
 Training uses the navigation-task region of `2026_training1.png` and the
 hippocampal-subfield region of `2026_training2.png`, retaining both full originals.
-Boundary and fNIRS thumbnails are the original `ppt/media/image1.png` pictures
-extracted from their supplied PPTX files; their full PNG overviews are retained.
+Boundary and fNIRS each pair the original `ppt/media/image1.png` picture
+extracted from the supplied PPTX with a result region from the full PNG overview.
+Boundary shows the task and brain results; fNIRS shows the device and delay/decision results.
 DBS and macaque thumbnails use the supplied PNGs in full. No scientific pixels,
 data, labels, or source slide files were edited.

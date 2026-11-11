@@ -47,11 +47,15 @@ def render_paper(p):
     if p.get('figures'):
         classes += ' has-thumbnail'
         thumbnails = []
-        for figure in p['figures']:
+        for figure_index, figure in enumerate(p['figures']):
             alt = e(figure['alt'])
             if figure.get('crop'):
                 crop = ' '.join(str(v) for v in figure['crop'])
-                img = f'<svg viewBox="{crop}" width="180" height="108" role="img" aria-label="{alt}"><image href="{e(figure["thumbnail"])}" width="{figure["width"]}" height="{figure["height"]}"/></svg>'
+                x, y, w, h = figure['crop']
+                clip_id = f'figure-clip-{p["id"]}-{figure_index}'
+                clip = f'<defs><clipPath id="{clip_id}"><rect x="{x}" y="{y}" width="{w}" height="{h}"/></clipPath></defs>'
+                masks = ''.join(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#fff"/>' for x, y, w, h in figure.get('mask_rects', []))
+                img = f'<svg viewBox="{crop}" width="180" height="108" role="img" aria-label="{alt}">{clip}<g clip-path="url(#{clip_id})"><image href="{e(figure["thumbnail"])}" width="{figure["width"]}" height="{figure["height"]}"/>{masks}</g></svg>'
             else:
                 img = f'<img src="{e(figure["thumbnail"])}" alt="{alt}" width="{figure["width"]}" height="{figure["height"]}" loading="lazy" decoding="async">'
             if p['links']:

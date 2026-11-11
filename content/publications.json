@@ -43,7 +43,15 @@
           465,
           295
         ],
-        "alt": "Hippocampal subfields and retrieval-related maps from the navigation-training study"
+        "alt": "Hippocampal subfields and retrieval-related maps from the navigation-training study",
+        "mask_rects": [
+          [
+            615,
+            330,
+            45,
+            40
+          ]
+        ]
       }
     ]
   },
@@ -80,6 +88,19 @@
         "width": 615,
         "height": 359,
         "alt": "Virtual environment with a spatial boundary and an ordered object-memory task"
+      },
+      {
+        "thumbnail": "/assets/images/publications/boundary-overview.png",
+        "full": "/assets/images/publications/boundary-overview.png",
+        "width": 2193,
+        "height": 858,
+        "crop": [
+          935,
+          50,
+          1250,
+          785
+        ],
+        "alt": "Encoding-related brain activity and boundary-related connectivity in the user and non-user groups"
       }
     ]
   },
@@ -160,6 +181,19 @@
         "width": 329,
         "height": 453,
         "alt": "Wearable fNIRS device and prefrontal cortical regions"
+      },
+      {
+        "thumbnail": "/assets/images/publications/fnirs-overview.png",
+        "full": "/assets/images/publications/fnirs-overview.png",
+        "width": 2267,
+        "height": 1016,
+        "crop": [
+          630,
+          0,
+          1637,
+          1016
+        ],
+        "alt": "fNIRS channel maps and regional effects during delay and decision phases of working memory"
       }
     ]
   },
