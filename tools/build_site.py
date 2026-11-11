@@ -60,13 +60,21 @@ def render_extra(s):
         else:
             text += inline
         body += f'<p>{text}</p>'
-    for item in s.get('items', []):
-        heading = link({'url': item['url'], 'label': item['title']}) if item.get('url') else e(item['title'])
-        body += f'<article><h3>{heading}</h3><p>{e(item.get("text", ""))}</p></article>'
+    if s.get('style') == 'compact-list':
+        entries = []
+        for item in s.get('items', []):
+            status = f' <span class="work-status">({e(item["status"])})</span>' if item.get('status') else ''
+            entries.append(f'<li>{e(item["title"])}{status}</li>')
+        body += '<ul class="work-list">' + ''.join(entries) + '</ul>'
+    else:
+        for item in s.get('items', []):
+            heading = link({'url': item['url'], 'label': item['title']}) if item.get('url') else e(item['title'])
+            body += f'<article><h3>{heading}</h3><p>{e(item.get("text", ""))}</p></article>'
     if s.get('icons'):
         icons = ''.join(f'<li><span role="img" aria-label="{e(i["label"])}" title="{e(i["label"])}">{e(i["symbol"])}</span></li>' for i in s['icons'])
         body += f'<ul class="interest-icons" aria-label="Other interests">{icons}</ul>'
-    return f'<section class="extra-section" id="{s["id"]}" aria-labelledby="{s["id"]}-title"><h2 id="{s["id"]}-title">{e(s["title"])}</h2>{body}</section>'
+    classes = 'extra-section compact-section' if s.get('style') == 'compact-list' else 'extra-section'
+    return f'<section class="{classes}" id="{s["id"]}" aria-labelledby="{s["id"]}-title"><h2 id="{s["id"]}-title">{e(s["title"])}</h2>{body}</section>'
 
 def page(main, title, path='/'):
     sharing = site['sharing_image']
@@ -86,7 +94,8 @@ def page(main, title, path='/'):
        name=e(site['name']), email=e(site['email']),
        navigation=''.join(link(x) for x in site['navigation']), main=main,
        structured_data=json.dumps(structured, ensure_ascii=False).replace('<', '\\u003c'), analytics=analytics,
-       css_hash=hashlib.sha256((ROOT/'assets/site.css').read_bytes()).hexdigest()[:10])
+       css_hash=hashlib.sha256((ROOT/'assets/site.css').read_bytes()).hexdigest()[:10],
+       favicon_hash=hashlib.sha256((ROOT/'assets/favicon.svg').read_bytes()).hexdigest()[:10])
 
 bio = ''.join(f'<p>{e(p)}</p>' for p in site['bio'])
 interests = ''

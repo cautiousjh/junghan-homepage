@@ -62,6 +62,29 @@
   "publications_heading": "Publications",
   "additional_sections": [
     {
+      "id": "work-in-progress",
+      "title": "Work in progress",
+      "style": "compact-list",
+      "items": [
+        {
+          "title": "Spontaneous grid-like chunking in human spatial navigation behavior and its neural correlates in hippocampal subregions.",
+          "status": "In revision"
+        },
+        {
+          "title": "Semantic boundaries facilitate efficient temporal memory organization through cortico-hippocampal segmentation."
+        },
+        {
+          "title": "SPARK: From foundation model representations to controllable interventions for creative ideation."
+        },
+        {
+          "title": "Event horizon in silico: A causal event-boundary direction aligned with human memory."
+        },
+        {
+          "title": "Conceptual space in large language models."
+        }
+      ]
+    },
+    {
       "id": "beyond-research",
       "title": "Beyond research",
       "paragraphs": [
@@ -82,9 +105,9 @@
   ],
   "analytics_id": "G-2C2X8QPR7K",
   "sharing_image": {
-    "path": "/assets/images/brain-network-share-v1.png",
+    "path": "/assets/images/brain-network-share-v2.png",
     "width": 1734,
     "height": 907,
-    "alt": "Line illustration of a human brain connected to a network"
+    "alt": "A softly rendered human brain connected to a blue-green network"
   }
 }

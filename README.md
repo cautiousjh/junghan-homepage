@@ -61,7 +61,7 @@ The existing Google Analytics property is retained.
 
 - Official name: Jung Han Shin. Light appearance; an al-folio-inspired academic
   layout with publications directly below the short introduction.
-- No GitHub profile link, posts, news feed or unpublished manuscript list.
+- No GitHub profile link, posts or news feed. A compact Work in progress list now follows publications.
 - Bio combines the supplied research profile with the author's LinkedIn
   description of methods and the two-way connection between neuroscience and AI.
 - CV link keeps the existing stable Google Drive file ID. CV source documents
@@ -80,7 +80,7 @@ it does not return an HTTP 301 response.
 
 ## Sharing image and hobby paragraph
 
-The selected sharing image is concept 03, a brain/network line illustration.
+The sharing image is the owner-selected attachment showing a soft brain on the left connected to a network on the right, stored as brain-network-share-v2.png. This supersedes the previously mismatched concept 03 selection.
 `sharing_image` in `content/site.json` controls Open Graph and large-image
 Twitter/X cards independently of the on-page portrait. Original dimensions
 are 1734 by 907 (1.912:1), and the PNG is about 1.13 MB.
@@ -88,3 +88,8 @@ are 1734 by 907 (1.912:1), and the PNG is about 1.13 MB.
 Beyond research uses one paragraph, starting with "Outside research,".
 `inline_icons_after` identifies the sentence after which the small water
 emoji are inserted. If editing that sentence, update the marker too.
+
+Work in progress entries live in content/site.json under additional_sections.
+Keep manuscript titles verbatim from the supplied CV. The first is marked
+In revision; do not imply publication or add unconfirmed target journals.
+The favicon is a simple teal brain outline, with a content-hashed URL.
