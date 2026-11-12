@@ -22,11 +22,11 @@
   "research_interests": [
     {
       "title": "Human episodic memory",
-      "description": "Hippocampal mechanisms, spatiotemporal memory, and event segmentation"
+      "description": "Hippocampal mechanisms · Spatiotemporal context · Event organization"
     },
     {
       "title": "Human and artificial memory",
-      "description": "Semantic and concept representations, event organization, and retrieval"
+      "description": "Semantic & conceptual representations · Efficient long-term memory"
     },
     {
       "title": "Brain-inspired AI",
@@ -37,6 +37,12 @@
       "description": "Enhancing memory and creativity through training and human-AI interaction"
     }
   ],
+  "research_schematic": {
+    "path": "/assets/images/research-schematic-20261112.png",
+    "width": 1073,
+    "height": 662,
+    "alt": "Human neuroscience and AI connected through cognitive augmentation, brain-AI convergence, and brain-inspired AI. Cognitive augmentation supports memory, learning, and creativity; brain-inspired AI explores long-term memory and architectures."
+  },
   "links": [
     {
       "label": "Email",

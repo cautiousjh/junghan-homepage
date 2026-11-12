@@ -242,7 +242,14 @@ bio = ''.join(f'<p>{e(p)}</p>' for p in site['bio'])
 interests = ''
 if site.get('research_interests'):
     items = ''.join(f'<li><strong>{e(i["title"])}</strong><span>{e(i["description"])}</span></li>' for i in site['research_interests'])
-    interests = f'<section class="research-interests" aria-labelledby="research-interests-title"><h2 id="research-interests-title">Research interests</h2><ul>{items}</ul></section>'
+    schematic = site.get('research_schematic')
+    visual = ''
+    if schematic:
+        visual = (f'<figure class="research-schematic"><a class="research-schematic-link" href="{e(schematic["path"])}" '
+                  'target="_blank" rel="noopener noreferrer" aria-label="View research schematic at full size">'
+                  + progressive_image(schematic['path'], schematic['alt'], schematic['width'], schematic['height'])
+                  + '</a></figure>')
+    interests = f'<section class="research-interests" aria-labelledby="research-interests-title"><h2 id="research-interests-title">Research interests</h2><div class="research-interests-layout"><ul>{items}</ul>{visual}</div></section>'
 social = ''.join(profile_link(x) for x in site['links'])
 scholar = next(x for x in site['links'] if x['label'] == 'Google Scholar')
 cv = next(x for x in site['links'] if x['label'] == 'CV')

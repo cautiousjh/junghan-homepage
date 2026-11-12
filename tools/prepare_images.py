@@ -20,6 +20,10 @@ papers = json.loads((ROOT / 'content/publications.json').read_text(encoding='utf
 # Scale whole images, not crops. SVG viewBox and mask coordinates stay untouched.
 jobs = {site['portrait']: {'display_width': 220 * 1.17, 'display_height': None,
                          'preview_width': 144, 'background': '#e8edf0', 'quality': 88}}
+if site.get('research_schematic'):
+    jobs[site['research_schematic']['path']] = {
+        'display_width': 470, 'display_height': None,
+        'preview_width': 236, 'background': '#ffffff', 'quality': 92}
 for paper in papers:
     figures = paper.get('figures', [])
     for figure in figures:

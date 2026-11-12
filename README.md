@@ -8,6 +8,18 @@ old links. It is not a second homepage.
 
 ## Edit content
 
+Research interests continues the biography with a modest 18px heading and no
+divider. The four interests form one vertical list. On desktop, the supplied
+research schematic sits beside them in a square display area up to 470px wide,
+using contain sizing so its artwork and labels are not cropped. Below 760px it
+moves under the list, up to 320px wide (290px on phones). Clicking opens the
+original schematic. `research_schematic` in `content/site.json` controls this
+on-page image independently of the sharing-card image. It uses the same WebP
+and inline-preview preparation as the other body images.
+
+The first two interest descriptions use middle-dot separators. The descriptions
+of Brain-inspired AI and Cognitive augmentation retain their existing wording.
+
 | File | Edit here |
 | --- | --- |
 | `content/site.json` | Name, affiliation, biography paragraphs, navigation, contact/CV links |
