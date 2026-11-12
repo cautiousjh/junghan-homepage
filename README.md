@@ -9,13 +9,18 @@ old links. It is not a second homepage.
 ## Edit content
 
 Research interests continues the biography with a modest 18px heading and no
-divider. The four interests form one vertical list. On desktop, the supplied
-research schematic sits beside them in a square display area up to 470px wide,
-using contain sizing so its artwork and labels are not cropped. Below 760px it
-moves under the list, up to 320px wide (290px on phones). Clicking opens the
-original schematic. `research_schematic` in `content/site.json` controls this
-on-page image independently of the sharing-card image. It uses the same WebP
-and inline-preview preparation as the other body images.
+divider. Its wider left column contains four interests (14px names, 13px
+descriptions, 12px gaps). The original full flowing illustration is preserved
+on the right, up to 360px wide, without forcing a square crop. Below 760px it
+moves below the list, at up to 290px wide. Its transparent PNG is retained;
+the efficient WebP display layer blends into the page using CSS multiply.
+`research_schematic` controls this illustration independently of sharing cards.
+
+The diagram's three labels are HTML buttons, and its connections are native
+SVG paths. Hover or keyboard focus highlights a connection. Clicking/tapping
+toggles the selection; Escape clears it. `assets/research-diagram.js` handles
+the highlight state, with reduced-motion support in CSS. Without JavaScript,
+the labels and diagram remain visible. There is no automatic animation.
 
 The first two interest descriptions use middle-dot separators. The descriptions
 of Brain-inspired AI and Cognitive augmentation retain their existing wording.
@@ -48,8 +53,9 @@ and ordinary publication `<img>` elements retain native lazy loading.
 The builder uses prepared files only if their recorded source hash matches;
 otherwise it falls back to the original until preparation is rerun.
 
-The nine current body images total about 338 KB, plus 40 KB of inline preview
-data, down from 5.36 MB of source PNGs. Sharing-card artwork is managed separately.
+The portrait and eight publication images total about 338 KB, plus 40 KB of
+inline previews. The research illustration adds about 34 KB plus its small
+inline preview. Sharing-card artwork is managed separately.
 
 The `bio` array in `content/site.json` contains the introduction: one quoted
 string per paragraph. Edit only the text inside the double quotes, preserve

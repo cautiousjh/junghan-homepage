@@ -245,10 +245,33 @@ if site.get('research_interests'):
     schematic = site.get('research_schematic')
     visual = ''
     if schematic:
-        visual = (f'<figure class="research-schematic"><a class="research-schematic-link" href="{e(schematic["path"])}" '
-                  'target="_blank" rel="noopener noreferrer" aria-label="View research schematic at full size">'
-                  + progressive_image(schematic['path'], schematic['alt'], schematic['width'], schematic['height'])
-                  + '</a></figure>')
+        illustration = progressive_image(schematic['path'], '', schematic['width'], schematic['height'])
+        script_hash = hashlib.sha256((ROOT/'assets/research-diagram.js').read_bytes()).hexdigest()[:10]
+        visual = f'''<figure class="research-schematic research-diagram" aria-label="Human neuroscience and artificial intelligence research">
+          <div class="research-illustration" aria-hidden="true">{illustration}</div>
+          <svg class="research-connections" viewBox="0 0 1672 940" aria-hidden="true">
+            <defs>
+              <marker id="research-blue-tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#4386a5"/></marker>
+              <marker id="research-green-tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#73945a"/></marker>
+            </defs>
+            <g class="diagram-route route-augmentation" data-route="augmentation">
+              <path class="route-hit" d="M960 282 Q835 202 710 282"/>
+              <path class="route-line" d="M960 282 Q835 202 710 282" marker-end="url(#research-blue-tip)"/>
+            </g>
+            <g class="diagram-route route-convergence" data-route="convergence">
+              <path class="route-hit" d="M710 405 C790 365 885 465 965 413"/>
+              <path class="route-line" d="M710 405 C790 365 885 465 965 413"/>
+              <path class="route-line second-flow" d="M710 448 C800 492 870 388 965 445"/>
+            </g>
+            <g class="diagram-route route-inspired" data-route="inspired">
+              <path class="route-hit" d="M710 550 Q835 630 960 550"/>
+              <path class="route-line" d="M710 550 Q835 630 960 550" marker-end="url(#research-green-tip)"/>
+            </g>
+          </svg>
+          <button type="button" class="diagram-label label-augmentation" data-route="augmentation" aria-pressed="false" aria-label="Highlight cognitive augmentation: AI supports human memory, learning and creativity"><strong>Cognitive augmentation</strong><span>Memory, learning, creativity</span></button>
+          <button type="button" class="diagram-label label-convergence" data-route="convergence" aria-pressed="false" aria-label="Highlight brain-AI convergence"><strong>Brain-AI<br>convergence</strong></button>
+          <button type="button" class="diagram-label label-inspired" data-route="inspired" aria-pressed="false" aria-label="Highlight brain-inspired AI: long-term memory and architectures"><strong>Brain-inspired AI</strong><span>Long-term memory, architectures</span></button>
+        </figure><script src="/assets/research-diagram.js?v={script_hash}" defer></script>'''
     interests = f'<section class="research-interests" aria-labelledby="research-interests-title"><h2 id="research-interests-title">Research interests</h2><div class="research-interests-layout"><ul>{items}</ul>{visual}</div></section>'
 social = ''.join(profile_link(x) for x in site['links'])
 scholar = next(x for x in site['links'] if x['label'] == 'Google Scholar')
