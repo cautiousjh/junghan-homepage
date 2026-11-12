@@ -141,6 +141,9 @@ h2 { font-size:26px; font-weight:500; line-height:1.3; letter-spacing:-.45px; ma
 .label-convergence { top:41%; --label-color:#4f8581; }
 .label-inspired { top:64%; --label-color:#73945a; }
 .diagram-label:hover,.diagram-label:focus-visible,.diagram-label[aria-pressed="true"] { color:var(--label-color); }
+.research-diagram[data-highlight="augmentation"] .label-augmentation,
+.research-diagram[data-highlight="convergence"] .label-convergence,
+.research-diagram[data-highlight="inspired"] .label-inspired { color:var(--label-color); }
 .diagram-label:focus-visible { outline:1px solid var(--label-color); outline-offset:2px; border-radius:3px; }
 .research-diagram[data-highlight="augmentation"] .route-augmentation .route-line,
 .research-diagram[data-highlight="convergence"] .route-convergence .route-line,
