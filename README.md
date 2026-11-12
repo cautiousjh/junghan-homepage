@@ -12,7 +12,7 @@ Research interests continues the biography with a modest 18px heading and no
 divider. Its wider left column contains four interests (14px names, 13px
 descriptions, 12px gaps). The original full flowing illustration is preserved
 on the right, up to 480px wide, without forcing a square crop. Its frame extends
-60px into the available inter-column space while label font sizes stay fixed.
+60px into the available inter-column space with label sizes scaled within readable bounds.
 Below 760px it
 moves below the list at 90vw, without a fixed pixel-width cap. Desktop positioning aligns the
 visible bottom wisps with the last bullet's description; transparent padding
@@ -35,8 +35,8 @@ The diagram's three labels are static HTML text in the same dark slate color
 illustration loads. Without JavaScript, the labels and diagram remain visible.
 
 Labels are centered on the same horizontal axis and anchored by their centers
-at 10%, 47.5% and 71% of the diagram height. Text size follows the diagram width
-within readable bounds. Convergence has no added SVG lines; only its label and
+at 10%, 44% and 71% of the diagram height. Headings scale from 10 to 12.5px;
+small descriptions scale from 8 to 9px. Convergence has no added SVG lines; only its label and
 the illustration's original faint flowing strands remain.
 
 The first two interest descriptions use middle-dot separators. The descriptions
