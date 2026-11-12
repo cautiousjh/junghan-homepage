@@ -11,10 +11,17 @@ old links. It is not a second homepage.
 Research interests continues the biography with a modest 18px heading and no
 divider. Its wider left column contains four interests (14px names, 13px
 descriptions, 12px gaps). The original full flowing illustration is preserved
-on the right, up to 360px wide, without forcing a square crop. Below 760px it
-moves below the list, at up to 290px wide. Its transparent PNG is retained;
-the efficient WebP display layer blends into the page using CSS multiply.
+on the right, up to 420px wide, without forcing a square crop. Below 760px it
+moves below the list, at up to 290px wide. The PNG, display WebP and inline
+preview all retain genuine alpha transparency; no white matte or CSS blend
+mode is used. Once the full image loads, its preview is hidden so translucent
+lines are not drawn twice. With JavaScript disabled, only the final image shows.
 `research_schematic` controls this illustration independently of sharing cards.
+
+`python tools/prepare_research_transparency.py` rebuilds the transparent
+illustration from the preserved approved artwork; it needs Pillow and NumPy.
+Run this only when changing that artwork, then run the usual image preparation
+and site build. It removes near-white paper grain and retains the colored wisps.
 
 The diagram's three labels are HTML buttons, and its connections are native
 SVG paths. Hover or keyboard focus highlights a connection. Clicking/tapping
@@ -54,7 +61,7 @@ The builder uses prepared files only if their recorded source hash matches;
 otherwise it falls back to the original until preparation is rerun.
 
 The portrait and eight publication images total about 338 KB, plus 40 KB of
-inline previews. The research illustration adds about 34 KB plus its small
+inline previews. The transparent research illustration adds about 205 KB plus its
 inline preview. Sharing-card artwork is managed separately.
 
 The `bio` array in `content/site.json` contains the introduction: one quoted

@@ -249,6 +249,7 @@ if site.get('research_interests'):
         script_hash = hashlib.sha256((ROOT/'assets/research-diagram.js').read_bytes()).hexdigest()[:10]
         visual = f'''<figure class="research-schematic research-diagram" aria-label="Human neuroscience and artificial intelligence research">
           <div class="research-illustration" aria-hidden="true">{illustration}</div>
+          <noscript><style>.research-illustration .image-preview{{display:none}}</style></noscript>
           <svg class="research-connections" viewBox="0 0 1672 940" aria-hidden="true">
             <defs>
               <marker id="research-blue-tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#4386a5"/></marker>

@@ -22,8 +22,8 @@ jobs = {site['portrait']: {'display_width': 220 * 1.17, 'display_height': None,
                          'preview_width': 144, 'background': '#e8edf0', 'quality': 88}}
 if site.get('research_schematic'):
     jobs[site['research_schematic']['path']] = {
-        'display_width': 360, 'display_height': None,
-        'preview_width': 236, 'background': '#ffffff', 'quality': 92}
+        'display_width': 420, 'display_height': None,
+        'preview_width': 236, 'background': None, 'quality': 92}
 for paper in papers:
     figures = paper.get('figures', [])
     for figure in figures:
@@ -44,10 +44,13 @@ for url, settings in jobs.items():
     source = ROOT / url.lstrip('/')
     original_bytes = source.read_bytes()
     rgba = ImageOps.exif_transpose(Image.open(source)).convert('RGBA')
-    # Match the existing element's background, so the loaded image fully covers
-    # its preview even when the source PNG contains transparency.
-    original = Image.new('RGB', rgba.size, settings['background'])
-    original.paste(rgba, mask=rgba.getchannel('A'))
+    # The research illustration must retain true alpha in both WebP and preview.
+    # Other assets retain their existing component background treatment.
+    if settings['background'] is None:
+        original = rgba
+    else:
+        original = Image.new('RGB', rgba.size, settings['background'])
+        original.paste(rgba, mask=rgba.getchannel('A'))
     density = 2.5
     width = min(original.width, round(settings['display_width'] * density))
     size = (width, max(1, round(original.height * width / original.width)))
