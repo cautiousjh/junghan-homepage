@@ -11,7 +11,9 @@ old links. It is not a second homepage.
 Research interests continues the biography with a modest 18px heading and no
 divider. Its wider left column contains four interests (14px names, 13px
 descriptions, 12px gaps). The original full flowing illustration is preserved
-on the right, up to 420px wide, without forcing a square crop. Below 760px it
+on the right, up to 480px wide, without forcing a square crop. Its frame extends
+60px into the available inter-column space while label font sizes stay fixed.
+Below 760px it
 moves below the list, at up to 290px wide. The PNG, display WebP and inline
 preview all retain genuine alpha transparency; no white matte or CSS blend
 mode is used. Once the full image loads, its preview is hidden so translucent
