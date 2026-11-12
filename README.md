@@ -17,8 +17,28 @@ old links. It is not a second homepage.
 | `assets/images/jung-han-shin.png` | Original supplied portrait (visual crop is CSS only) |
 | `templates/page.html` | Shared page structure, navigation, metadata and footer |
 | `tools/build_site.py` | Static HTML generator; Python standard library only |
+| `tools/prepare_images.py` | Generate WebP display copies and inline previews; requires Pillow |
 
 The `site_title` field controls the homepage browser and sharing-preview title, currently `Jung Han Shin · Neuro x AI`.
+
+### Image loading
+
+After adding or replacing a portrait/publication source image, run
+`python tools/prepare_images.py`, then `python tools/build_site.py`.
+The preparation step writes display-size WebP copies and a manifest under
+`assets/images/optimized/`. Source PNGs are preserved. Publication viewBox crops,
+clip paths, white masks, paper links and the portrait's CSS crop stay unchanged.
+
+Small previews are embedded in the HTML and shown beneath the main images.
+The browser covers them when each main image finishes loading; this needs no
+JavaScript. Previews have no added blur. The portrait keeps high fetch priority,
+and ordinary publication `<img>` elements retain native lazy loading.
+The builder uses prepared files only if their recorded source hash matches;
+otherwise it falls back to the original until preparation is rerun.
+
+The nine current body images total about 338 KB, plus 40 KB of inline preview
+data, down from 5.36 MB of source PNGs. Sharing-card artwork is managed separately.
+
 The `bio` array in `content/site.json` contains the introduction: one quoted
 string per paragraph. Edit only the text inside the double quotes, preserve
 the separating commas, and save as UTF-8. `research_interests` holds the four

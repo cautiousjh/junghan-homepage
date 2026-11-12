@@ -13,7 +13,26 @@ papers = json.loads((ROOT / 'content/publications.json').read_text(encoding='utf
 presentations = json.loads((ROOT / 'content/presentations.json').read_text(encoding='utf-8'))
 news = json.loads((ROOT / 'content/news.json').read_text(encoding='utf-8'))
 template = Template((ROOT / 'templates/page.html').read_text(encoding='utf-8'))
+image_manifest = ROOT / 'assets/images/optimized/manifest.json'
+image_assets = json.loads(image_manifest.read_text(encoding='utf-8'))['assets'] if image_manifest.exists() else {}
 e = escape
+
+def display_image(url):
+    """Use a prepared asset only while its source is unchanged."""
+    asset = image_assets.get(url)
+    if asset and (ROOT / asset['path'].lstrip('/')).exists():
+        if hashlib.sha256((ROOT / url.lstrip('/')).read_bytes()).hexdigest() == asset['source_sha256']:
+            return asset
+    return {'path': url}
+
+def progressive_image(url, alt, width, height, *, portrait=False):
+    asset = display_image(url)
+    preview = (f'<img class="image-preview" src="{asset["preview"]}" alt="" aria-hidden="true" '
+               f'width="{width}" height="{height}">') if asset.get('preview') else ''
+    priority = 'fetchpriority="high"' if portrait else 'loading="lazy"'
+    image = (f'<img class="image-full" src="{e(asset["path"])}" alt="{e(alt)}" '
+             f'width="{width}" height="{height}" {priority} decoding="async">')
+    return f'<span class="progressive-image">{preview}{image}</span>'
 
 def link(item, cls=''):
     url = item['url']
@@ -87,9 +106,11 @@ def render_paper(p):
                 clip_id = f'figure-clip-{p["id"]}-{figure_index}'
                 clip = f'<defs><clipPath id="{clip_id}"><rect x="{x}" y="{y}" width="{w}" height="{h}"/></clipPath></defs>'
                 masks = ''.join(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#fff"/>' for x, y, w, h in figure.get('mask_rects', []))
-                img = f'<svg viewBox="{crop}" width="180" height="108" role="img" aria-label="{alt}">{clip}<g clip-path="url(#{clip_id})"><image href="{e(figure["thumbnail"])}" width="{figure["width"]}" height="{figure["height"]}"/>{masks}</g></svg>'
+                asset = display_image(figure['thumbnail'])
+                preview = (f'<image href="{asset["preview"]}" width="{figure["width"]}" height="{figure["height"]}" aria-hidden="true"/>') if asset.get('preview') else ''
+                img = f'<svg viewBox="{crop}" width="180" height="108" role="img" aria-label="{alt}">{clip}<g clip-path="url(#{clip_id})">{preview}<image href="{e(asset["path"])}" width="{figure["width"]}" height="{figure["height"]}"/>{masks}</g></svg>'
             else:
-                img = f'<img src="{e(figure["thumbnail"])}" alt="{alt}" width="{figure["width"]}" height="{figure["height"]}" loading="lazy" decoding="async">'
+                img = progressive_image(figure['thumbnail'], figure['alt'], figure['width'], figure['height'])
             if p['links']:
                 thumbnails.append(f'<a class="publication-thumbnail figure-link" href="{e(p["links"][0]["url"])}" target="_blank" rel="noopener noreferrer" aria-label="Read paper: {e(p["title"])}">{img}</a>')
             else:
@@ -229,7 +250,7 @@ main = f'''<section class="profile" id="about" aria-labelledby="profile-name">
   <div class="profile-copy"><div class="identity"><h1 id="profile-name">{e(site['name'])}</h1>
     <p class="role">{e(site['role'])}</p><p class="affiliation">{e(site['department'])}<br>{e(site['institution'])}</p></div>
     <div class="bio">{bio}</div>
-  </div><div class="profile-aside"><figure class="portrait"><img src="{e(site['portrait'])}" alt="{e(site['name'])}" width="842" height="1178" fetchpriority="high"></figure>
+  </div><div class="profile-aside"><figure class="portrait">{progressive_image(site['portrait'], site['name'], 842, 1178, portrait=True)}</figure>
     <div class="profile-links" aria-label="Contact and profiles">{social}</div></div>
 </section>
 {interests}
