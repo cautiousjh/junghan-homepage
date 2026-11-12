@@ -262,9 +262,9 @@ if site.get('research_interests'):
               <path class="route-line" d="M710 550 Q835 630 960 550" marker-end="url(#research-green-tip)"/>
             </g>
           </svg>
-          <div class="diagram-label label-augmentation"><strong>Cognitive augmentation</strong><span>Memory, learning, creativity</span></div>
+          <div class="diagram-label label-augmentation"><strong>Cognitive augmentation</strong></div>
           <div class="diagram-label label-convergence"><strong>Brain-AI<br>convergence</strong></div>
-          <div class="diagram-label label-inspired"><strong>Brain-inspired AI</strong><span>Long-term memory, architectures</span></div>
+          <div class="diagram-label label-inspired"><strong>Brain-inspired AI</strong></div>
         </figure><script src="/assets/research-diagram.js?v={script_hash}" defer></script>'''
     interests = f'<section class="research-interests" aria-labelledby="research-interests-title"><h2 id="research-interests-title">Research interests</h2><div class="research-interests-layout"><ul>{items}</ul>{visual}</div></section>'
 social = ''.join(profile_link(x) for x in site['links'])

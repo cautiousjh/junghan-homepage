@@ -35,8 +35,9 @@ The diagram's three labels are static HTML text in the same dark slate color
 illustration loads. Without JavaScript, the labels and diagram remain visible.
 
 Labels are centered on the same horizontal axis and anchored by their centers
-at 10%, 44% and 71% of the diagram height. Headings scale from 10 to 12.5px;
-small descriptions scale from 8 to 9px. Convergence has no added SVG lines; only its label and
+at 10%, 44% and 71% of the diagram height. Only the three headings remain,
+scaled from 11 to 14px; the two small descriptions have been removed.
+Convergence has no added SVG lines; only its label and
 the illustration's original faint flowing strands remain.
 
 The first two interest descriptions use middle-dot separators. The descriptions
