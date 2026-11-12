@@ -40,8 +40,11 @@ scaled from 11 to 13px; the two small descriptions have been removed.
 Convergence has no added SVG lines; only its label and
 the illustration's original faint flowing strands remain.
 
-The first two interest descriptions use middle-dot separators. The descriptions
-of Brain-inspired AI and Cognitive augmentation retain their existing wording.
+The interest list keeps Human episodic memory first, followed by Cognitive
+augmentation, Human and artificial memory, and Brain-inspired AI, matching
+the diagram's top-to-bottom order for those three items. Human episodic memory
+and Human and artificial memory use middle-dot separators in their descriptions.
+All description wording is preserved.
 
 | File | Edit here |
 | --- | --- |
