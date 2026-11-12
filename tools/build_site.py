@@ -256,13 +256,14 @@ if site.get('research_interests'):
               <marker id="research-green-tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#73945a"/></marker>
             </defs>
             <g class="diagram-route route-augmentation" data-route="augmentation">
-              <path class="route-hit" d="M960 282 Q835 202 710 282"/>
-              <path class="route-line" d="M960 282 Q835 202 710 282" marker-end="url(#research-blue-tip)"/>
+              <path class="route-hit" d="M960 250 Q835 185 710 250"/>
+              <path class="route-line" d="M960 250 Q835 185 710 250" marker-end="url(#research-blue-tip)"/>
             </g>
             <g class="diagram-route route-convergence" data-route="convergence">
-              <path class="route-hit" d="M710 405 C790 365 885 465 965 413"/>
-              <path class="route-line" d="M710 405 C790 365 885 465 965 413"/>
-              <path class="route-line second-flow" d="M710 448 C800 492 870 388 965 445"/>
+              <path class="route-hit" d="M710 388 C790 340 885 340 965 388"/>
+              <path class="route-hit" d="M710 486 C790 534 885 534 965 486"/>
+              <path class="route-line" d="M710 388 C790 340 885 340 965 388"/>
+              <path class="route-line second-flow" d="M710 486 C790 534 885 534 965 486"/>
             </g>
             <g class="diagram-route route-inspired" data-route="inspired">
               <path class="route-hit" d="M710 550 Q835 630 960 550"/>
