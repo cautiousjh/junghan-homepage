@@ -36,8 +36,9 @@ the labels and diagram remain visible. There is no automatic animation.
 
 Labels are centered on the same horizontal axis and anchored by their centers
 at 10%, 47.5% and 71% of the diagram height. Text size follows the diagram width
-within readable bounds. The convergence curves pass above/below its label,
-so a highlighted connection never strikes through that text.
+within readable bounds. Convergence has no added SVG lines; only its label and
+the illustration's original faint flowing strands remain. The upper and lower
+directional arrows retain their hover/focus highlights.
 
 The first two interest descriptions use middle-dot separators. The descriptions
 of Brain-inspired AI and Cognitive augmentation retain their existing wording.
