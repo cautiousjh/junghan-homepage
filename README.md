@@ -28,15 +28,15 @@ illustration from the preserved approved artwork; it needs Pillow and NumPy.
 Run this only when changing that artwork, then run the usual image preparation
 and site build. It removes near-white paper grain and retains the colored wisps.
 
-The diagram's three labels are static HTML text in the same dark slate color
-(#344b55). Its two directional arrows are native SVG paths with a constant
+The diagram's three labels are static HTML text in the same muted slate color
+(#586d72), with a medium font weight of 500. Its two directional arrows are native SVG paths with a constant
 10-unit stroke. There are no hover or selection highlights.
 `assets/research-diagram.js` only hides the image preview after the transparent
 illustration loads. Without JavaScript, the labels and diagram remain visible.
 
 Labels are centered on the same horizontal axis and anchored by their centers
 at 10%, 44% and 71% of the diagram height. Only the three headings remain,
-scaled from 11 to 14px; the two small descriptions have been removed.
+scaled from 11 to 13px; the two small descriptions have been removed.
 Convergence has no added SVG lines; only its label and
 the illustration's original faint flowing strands remain.
 
