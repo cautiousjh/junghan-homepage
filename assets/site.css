@@ -134,23 +134,14 @@ h2 { font-size:26px; font-weight:500; line-height:1.3; letter-spacing:-.45px; ma
 .diagram-route { --route-color:#4f8581; }
 .route-augmentation { --route-color:#4386a5; }
 .route-inspired { --route-color:#73945a; }
-.route-line { fill:none; stroke:var(--route-color); stroke-width:6; stroke-linecap:round; opacity:.8; transition:stroke-width .18s ease,opacity .18s ease; pointer-events:none; }
-.route-hit { fill:none; stroke:transparent; stroke-width:50; pointer-events:stroke; cursor:pointer; }
-.diagram-label { position:absolute; left:50%; transform:translate(-50%,-50%); border:0; padding:3px 5px; background:none; color:#344b55; font:inherit; text-align:center; line-height:1.2; white-space:nowrap; cursor:pointer; transition:color .18s ease; }
+.route-line { fill:none; stroke:var(--route-color); stroke-width:10; stroke-linecap:round; opacity:.9; pointer-events:none; }
+.diagram-label { position:absolute; left:50%; transform:translate(-50%,-50%); padding:3px 5px; color:#344b55; font:inherit; text-align:center; line-height:1.2; white-space:nowrap; }
 .research-interests .diagram-label strong { font-size:clamp(9.5px,2.4cqw,11.5px); font-weight:600; margin:0; color:inherit; }
 .diagram-label span { display:block; font-size:clamp(7.5px,1.8cqw,8.5px); margin-top:3px; }
-.label-augmentation { top:10%; --label-color:#4386a5; }
-.label-convergence { top:47.5%; --label-color:#4f8581; }
+.label-augmentation { top:10%; }
+.label-convergence { top:47.5%; }
 .label-convergence strong { line-height:1.18; }
-.label-inspired { top:71%; --label-color:#73945a; }
-.diagram-label:hover,.diagram-label:focus-visible,.diagram-label[aria-pressed="true"] { color:var(--label-color); }
-.research-diagram[data-highlight="augmentation"] .label-augmentation,
-.research-diagram[data-highlight="convergence"] .label-convergence,
-.research-diagram[data-highlight="inspired"] .label-inspired { color:var(--label-color); }
-.diagram-label:focus-visible { outline:1px solid var(--label-color); outline-offset:2px; border-radius:3px; }
-.research-diagram[data-highlight="augmentation"] .route-augmentation .route-line,
-.research-diagram[data-highlight="inspired"] .route-inspired .route-line { stroke-width:10; opacity:1; }
-@media(prefers-reduced-motion:reduce) { .route-line,.diagram-label { transition:none; } }
+.label-inspired { top:71%; }
 .cv-page { max-width:660px; padding:10px 0 80px; }
 .cv-page h1 { font-size:36px; margin-bottom:22px; }
 .cv-page p { color:var(--muted); }

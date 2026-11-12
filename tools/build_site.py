@@ -255,18 +255,16 @@ if site.get('research_interests'):
               <marker id="research-blue-tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#4386a5"/></marker>
               <marker id="research-green-tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#73945a"/></marker>
             </defs>
-            <g class="diagram-route route-augmentation" data-route="augmentation">
-              <path class="route-hit" d="M960 250 Q835 185 710 250"/>
+            <g class="diagram-route route-augmentation">
               <path class="route-line" d="M960 250 Q835 185 710 250" marker-end="url(#research-blue-tip)"/>
             </g>
-            <g class="diagram-route route-inspired" data-route="inspired">
-              <path class="route-hit" d="M710 550 Q835 630 960 550"/>
+            <g class="diagram-route route-inspired">
               <path class="route-line" d="M710 550 Q835 630 960 550" marker-end="url(#research-green-tip)"/>
             </g>
           </svg>
-          <button type="button" class="diagram-label label-augmentation" data-route="augmentation" aria-pressed="false" aria-label="Highlight cognitive augmentation: AI supports human memory, learning and creativity"><strong>Cognitive augmentation</strong><span>Memory, learning, creativity</span></button>
-          <button type="button" class="diagram-label label-convergence" data-route="convergence" aria-pressed="false" aria-label="Highlight brain-AI convergence"><strong>Brain-AI<br>convergence</strong></button>
-          <button type="button" class="diagram-label label-inspired" data-route="inspired" aria-pressed="false" aria-label="Highlight brain-inspired AI: long-term memory and architectures"><strong>Brain-inspired AI</strong><span>Long-term memory, architectures</span></button>
+          <div class="diagram-label label-augmentation"><strong>Cognitive augmentation</strong><span>Memory, learning, creativity</span></div>
+          <div class="diagram-label label-convergence"><strong>Brain-AI<br>convergence</strong></div>
+          <div class="diagram-label label-inspired"><strong>Brain-inspired AI</strong><span>Long-term memory, architectures</span></div>
         </figure><script src="/assets/research-diagram.js?v={script_hash}" defer></script>'''
     interests = f'<section class="research-interests" aria-labelledby="research-interests-title"><h2 id="research-interests-title">Research interests</h2><div class="research-interests-layout"><ul>{items}</ul>{visual}</div></section>'
 social = ''.join(profile_link(x) for x in site['links'])

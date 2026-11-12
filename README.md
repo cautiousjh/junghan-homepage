@@ -28,17 +28,16 @@ illustration from the preserved approved artwork; it needs Pillow and NumPy.
 Run this only when changing that artwork, then run the usual image preparation
 and site build. It removes near-white paper grain and retains the colored wisps.
 
-The diagram's three labels are HTML buttons, and its connections are native
-SVG paths. Hover or keyboard focus highlights a connection. Clicking/tapping
-toggles the selection; Escape clears it. `assets/research-diagram.js` handles
-the highlight state, with reduced-motion support in CSS. Without JavaScript,
-the labels and diagram remain visible. There is no automatic animation.
+The diagram's three labels are static HTML text in the same dark slate color
+(#344b55). Its two directional arrows are native SVG paths with a constant
+10-unit stroke. There are no hover or selection highlights.
+`assets/research-diagram.js` only hides the image preview after the transparent
+illustration loads. Without JavaScript, the labels and diagram remain visible.
 
 Labels are centered on the same horizontal axis and anchored by their centers
 at 10%, 47.5% and 71% of the diagram height. Text size follows the diagram width
 within readable bounds. Convergence has no added SVG lines; only its label and
-the illustration's original faint flowing strands remain. The upper and lower
-directional arrows retain their hover/focus highlights.
+the illustration's original faint flowing strands remain.
 
 The first two interest descriptions use middle-dot separators. The descriptions
 of Brain-inspired AI and Cognitive augmentation retain their existing wording.
