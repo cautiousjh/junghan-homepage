@@ -14,7 +14,7 @@ descriptions, 12px gaps). The original full flowing illustration is preserved
 on the right, up to 480px wide, without forcing a square crop. Its frame extends
 60px into the available inter-column space with label sizes scaled within readable bounds.
 Below 760px it
-moves below the list at 90vw, without a fixed pixel-width cap. Desktop positioning aligns the
+moves above the list at 90vw, without a fixed pixel-width cap. Desktop positioning aligns the
 visible bottom wisps with the last bullet's description; transparent padding
 does not add layout height. News follows with a 24px top margin.
 The PNG, display WebP and inline
