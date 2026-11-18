@@ -14,10 +14,15 @@
         "name": "S. A. Lee"
       }
     ],
-    "year": "In press",
+    "year": "2026",
     "venue": "Nature Communications",
     "details": "",
-    "links": [],
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://doi.org/10.1038/s41467-026-79267-1"
+      }
+    ],
     "figures": [
       {
         "thumbnail": "/assets/images/publications/training-study.png",

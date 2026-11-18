@@ -147,8 +147,10 @@ The existing Google Analytics property is retained.
 - NeuroImage DOI `10.1016/j.neuroimage.2025.121101` uses the publisher's final
   title, “Stimulation of the anterior thalamus modulates behavior in multiple
   cognitive domains”.
-- The Nature Communications article remains **In press**, as in the supplied CV;
-  no unverified DOI/PDF button is displayed.
+- The Nature Communications article is listed under **2026** following its
+  publication on 18 November 2026. Its title and thumbnails link to
+  `https://doi.org/10.1038/s41467-026-79267-1`. The publisher currently lists
+  an early-access article without volume/article-number details, so those fields remain blank.
 
 The original site's Git history is retained. The legacy domain preserves HTTPS
 and redirects in the browser, including paths, query strings and fragments;
