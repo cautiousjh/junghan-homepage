@@ -99,6 +99,7 @@ entries without a paper URL use non-clickable images. `full` retains the origina
 figure reference in the source data. Paired figures are stacked on desktop
 and placed side by side below the citation on narrow screens. Entries without
 figures keep the compact year column. Legacy `image` / `image_alt` still work.
+On narrow screens, a single figure is centered below the citation.
 
 The Nature Communications paper also has an `overview_figure` with `path`,
 `width`, `height`, and `alt`. Its complete training schematic is grouped below

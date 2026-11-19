@@ -196,6 +196,7 @@ h2 { font-size:26px; font-weight:500; line-height:1.3; letter-spacing:-.45px; ma
  .publication.has-overview .publication-visual { grid-column:1; grid-row:2; }
  .publication.has-overview .publication-overview { grid-column:1; grid-row:3; max-width:none; margin:0; }
  .publication-figures { flex-direction:row; flex-wrap:wrap; }
+ .publication-figures:not(.multi) { justify-content:center; }
  .publication-figures.multi { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); max-width:368px; }
  .publication-figures.multi .publication-thumbnail { width:100%; max-width:180px; }
  .publication h3 { font-size:16px; } .authors,.venue { font-size:13px; }
