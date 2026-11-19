@@ -123,6 +123,15 @@ def render_paper(p):
     has_thumbnail = bool(p.get('figures') or p.get('image'))
     article = f'''<article>{year if has_thumbnail else ''}<h3>{title}</h3><p class="authors">{author_text}</p>
         <p class="venue"><cite>{e(p['venue'])}</cite>{details}</p>{links}</article>'''
+    if p.get('overview_figure'):
+        classes += ' has-overview'
+        overview = p['overview_figure']
+        image = progressive_image(overview['path'], overview['alt'], overview['width'], overview['height'])
+        if p['links']:
+            overview_html = f'<a class="publication-overview" href="{e(p["links"][0]["url"])}" target="_blank" rel="noopener noreferrer">{image}</a>'
+        else:
+            overview_html = f'<div class="publication-overview">{image}</div>'
+        article = f'<div class="publication-main">{article}{overview_html}</div>'
     content = article + visual if has_thumbnail else visual + article
     return f'<li class="{classes}" id="{e(p["id"])}">{content}</li>'
 

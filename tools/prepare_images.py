@@ -25,6 +25,10 @@ if site.get('research_schematic'):
         'display_width': 420, 'display_height': None,
         'preview_width': 236, 'background': None, 'quality': 92}
 for paper in papers:
+    if paper.get('overview_figure'):
+        jobs[paper['overview_figure']['path']] = {
+            'display_width': 400, 'display_height': None,
+            'preview_width': 240, 'background': '#ffffff', 'quality': 92}
     figures = paper.get('figures', [])
     for figure in figures:
         visible = figure.get('crop', [0, 0, figure['width'], figure['height']])

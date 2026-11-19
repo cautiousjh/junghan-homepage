@@ -58,7 +58,13 @@
           ]
         ]
       }
-    ]
+    ],
+    "overview_figure": {
+      "path": "/assets/images/publications/training-overview.png",
+      "width": 1473,
+      "height": 632,
+      "alt": "Navigation training overview: pre-training assessment, two weeks of online training with an active control group, and post-training assessment"
+    }
   },
   {
     "id": "spatial-boundary-structures",

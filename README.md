@@ -100,6 +100,16 @@ figure reference in the source data. Paired figures are stacked on desktop
 and placed side by side below the citation on narrow screens. Entries without
 figures keep the compact year column. Legacy `image` / `image_alt` still work.
 
+The Nature Communications paper also has an `overview_figure` with `path`,
+`width`, `height`, and `alt`. Its complete training schematic is grouped below
+the citation in the left column, centered at up to 400px wide with a 16px gap.
+The original two thumbnails stay stacked in the right column. At 480px and
+below, the citation comes first, then the two original thumbnails side by side,
+then the full-width schematic. The schematic links to the paper and uses the
+same prepared WebP/preview pipeline. Its source is Figure 4a, extracted under
+`../design/natcomm-figure-candidates-20261118/`; the approved layout preview is
+`../design/natcomm-original-plus-schematic-20261119/preview-refined.html`.
+
 News is managed in `content/news.json` and appears before Publications. Each item
 has `date` (`YYYY-MM`) and `text`, with an optional `link` containing `label` and
 `url`. Items sort newest first. The latest three are visible; older items appear
