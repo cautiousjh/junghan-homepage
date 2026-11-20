@@ -64,7 +64,21 @@
       "width": 1473,
       "height": 632,
       "alt": "Navigation training overview: pre-training assessment, two weeks of online training with an active control group, and post-training assessment"
-    }
+    },
+    "companion_figures": [
+      {
+        "path": "/assets/images/publications/training-em-task.png",
+        "width": 611,
+        "height": 344,
+        "alt": "Episodic memory task used to test transfer from navigation training"
+      },
+      {
+        "path": "/assets/images/publications/training-whole-brain.png",
+        "width": 1050,
+        "height": 627,
+        "alt": "Training-related brain activation: coronal and sagittal views with the original F color scale"
+      }
+    ]
   },
   {
     "id": "spatial-boundary-structures",

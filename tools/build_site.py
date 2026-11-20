@@ -131,7 +131,16 @@ def render_paper(p):
             overview_html = f'<a class="publication-overview" href="{e(p["links"][0]["url"])}" target="_blank" rel="noopener noreferrer">{image}</a>'
         else:
             overview_html = f'<div class="publication-overview">{image}</div>'
-        article = f'<div class="publication-main">{article}{overview_html}</div>'
+        companions = []
+        for figure in p.get('companion_figures', []):
+            image = progressive_image(figure['path'], figure['alt'], figure['width'], figure['height'])
+            if p['links']:
+                companions.append(f'<a class="publication-companion" href="{e(p["links"][0]["url"])}" target="_blank" rel="noopener noreferrer">{image}</a>')
+            else:
+                companions.append(f'<div class="publication-companion">{image}</div>')
+        row_class = ' has-companions' if companions else ''
+        row = ''.join(companions[:1]) + overview_html + ''.join(companions[1:])
+        article = f'<div class="publication-main">{article}<div class="publication-overview-row{row_class}">{row}</div></div>'
     content = article + visual if has_thumbnail else visual + article
     return f'<li class="{classes}" id="{e(p["id"])}">{content}</li>'
 

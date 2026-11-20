@@ -101,18 +101,19 @@ and placed side by side below the citation on narrow screens. Entries without
 figures keep the compact year column. Legacy `image` / `image_alt` still work.
 On narrow screens, a single figure is centered below the citation.
 
-The Nature Communications paper also has an `overview_figure` with `path`,
-`width`, `height`, and `alt`. Above 760px, its complete training schematic sits
-between the citation and the original two stacked thumbnails, in a three-column
-layout. The schematic stays up to 400px wide and shrinks to fit narrower desktop
-windows. Between 481px and 760px it remains below the citation in the left column.
-At 480px and
-below, the citation comes first, then the two original thumbnails side by side,
-then the full-width schematic. The schematic links to the paper and uses the
-same prepared WebP/preview pipeline. Its source is Figure 4a, extracted under
-`../design/natcomm-figure-candidates-20261118/`; the approved layout preview is
-`../design/natcomm-original-plus-schematic-20261119/preview-refined.html`;
-the desktop placement was moved between the text and thumbnails on 2026-11-20.
+The Nature Communications paper retains the standard citation-left and
+two-thumbnails-right layout. Above 760px, one compact row below it shows the
+EM task, training schematic, and whole-brain training result. Their maximum
+widths are 180px, 360px, and 240px. `overview_figure` stores the central schematic;
+`companion_figures` stores the two additional images, each with `path`, `width`,
+`height`, and `alt`. All three link to the paper and use the prepared WebP pipeline.
+At 760px and below the companion images are hidden, preserving the existing
+tablet/mobile layout. At 480px and below, the citation comes first, then the two
+original thumbnails side by side, then the full-width schematic.
+The schematic is from Figure 4a under `../design/natcomm-figure-candidates-20261118/`.
+The EM task and two-view whole-brain result (with its original F scale) are from
+`../design/natcomm-thumbnail-options-20261119/assets/`. The current layout capture
+is `../design/natcomm-supporting-row-20261120/web-mobile.png`.
 
 News is managed in `content/news.json` and appears before Publications. Each item
 has `date` (`YYYY-MM`) and `text`, with an optional `link` containing `label` and

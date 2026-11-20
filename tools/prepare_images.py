@@ -29,6 +29,10 @@ for paper in papers:
         jobs[paper['overview_figure']['path']] = {
             'display_width': 400, 'display_height': None,
             'preview_width': 240, 'background': '#ffffff', 'quality': 92}
+    for figure in paper.get('companion_figures', []):
+        jobs[figure['path']] = {
+            'display_width': 240, 'display_height': None,
+            'preview_width': 160, 'background': '#ffffff', 'quality': 92}
     figures = paper.get('figures', [])
     for figure in figures:
         visible = figure.get('crop', [0, 0, figure['width'], figure['height']])
