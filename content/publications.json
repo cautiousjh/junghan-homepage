@@ -78,7 +78,8 @@
         "height": 627,
         "alt": "Training-related brain activation: coronal and sagittal views with the original F color scale"
       }
-    ]
+    ],
+    "figure_layout": "study-grid"
   },
   {
     "id": "spatial-boundary-structures",

@@ -138,9 +138,22 @@ def render_paper(p):
                 companions.append(f'<a class="publication-companion" href="{e(p["links"][0]["url"])}" target="_blank" rel="noopener noreferrer">{image}</a>')
             else:
                 companions.append(f'<div class="publication-companion">{image}</div>')
-        row_class = ' has-companions' if companions else ''
-        row = ''.join(companions[:1]) + overview_html + ''.join(companions[1:])
-        article = f'<div class="publication-main">{article}<div class="publication-overview-row{row_class}">{row}</div></div>'
+        if p.get('figure_layout') == 'study-grid':
+            if len(p.get('figures', [])) != 2 or len(companions) != 2:
+                raise ValueError('The study grid requires two original and two companion figures.')
+            classes += ' has-study-grid'
+            study_images = [
+                companions[0].replace('publication-companion', 'publication-study-image'),
+                thumbnails[1].replace('publication-thumbnail', 'publication-study-image'),
+                thumbnails[0].replace('publication-thumbnail', 'publication-study-image'),
+                companions[1].replace('publication-companion', 'publication-study-image'),
+            ]
+            visual = '<div class="publication-visual"><div class="publication-study-grid">' + ''.join(study_images) + '</div></div>'
+            article = f'<div class="publication-main">{article}{overview_html}</div>'
+        else:
+            row_class = ' has-companions' if companions else ''
+            row = ''.join(companions[:1]) + overview_html + ''.join(companions[1:])
+            article = f'<div class="publication-main">{article}<div class="publication-overview-row{row_class}">{row}</div></div>'
     content = article + visual if has_thumbnail else visual + article
     return f'<li class="{classes}" id="{e(p["id"])}">{content}</li>'
 
