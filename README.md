@@ -104,8 +104,9 @@ figures keep the compact year column. Legacy `image` / `image_alt` still work.
 On narrow screens, a single figure is centered below the citation.
 
 The Nature Communications paper uses `figure_layout: "task-pair"`. The citation
-stays in the left column. Its 300px right column contains the EM and navigation
-tasks side by side, with the training schematic below them. At 760px and below,
+stays in the left column. Its 360px right column contains the EM and navigation
+tasks side by side at their 16:9 aspect ratio, with the training schematic below
+them. At 760px and below,
 the schematic is shown first, followed by the two tasks side by side. The group
 is capped at 400px on wider mobile/tablet screens. `figures` contains the two
 tasks and `overview_figure` contains the schematic. All three link to the paper.
