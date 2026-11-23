@@ -101,25 +101,24 @@ and placed side by side below the citation on narrow screens. Entries without
 figures keep the compact year column. Legacy `image` / `image_alt` still work.
 On narrow screens, a single figure is centered below the citation.
 
-The Nature Communications paper uses `figure_layout: "study-grid"`. The citation
-and a compact 320px training schematic are grouped in the left column; four
-images form a 320px-wide 2x2 grid in the right column. The pairs are EM task /
-hippocampus, followed by navigation task / whole-brain training. This keeps
-the standard text-left / figure-right structure without a separate lower strip.
-At 760px and below, the citation is followed by the full-width schematic and
-the two image pairs. On wider tablet screens, the image groups are capped at 400px.
-`overview_figure` stores the schematic and `companion_figures` stores EM and
-whole-brain images, each with `path`, `width`, `height`, and `alt`. All images
-link to the paper and use the prepared WebP pipeline. Original crops and masks
-are preserved for the navigation and hippocampal figures.
+The Nature Communications paper uses `figure_layout: "task-pair"`. The citation
+stays in the left column. Its 280px right column contains the EM and navigation
+tasks side by side, with the training schematic below them. At 760px and below,
+the schematic is shown first, followed by the two tasks side by side. The group
+is capped at 400px on wider mobile/tablet screens. `figures` contains the two
+tasks and `overview_figure` contains the schematic. All three link to the paper.
+The hippocampal and whole-brain images are no longer displayed, but their
+original assets and earlier design proposals are retained.
 The schematic is from Figure 4a under `../design/natcomm-figure-candidates-20261118/`.
-The EM task and two-view whole-brain result (with its original F scale) are from
-`../design/natcomm-thumbnail-options-20261119/assets/`. The current layout capture
-is `../design/natcomm-balanced-study-20261121/web-mobile.png`.
+The EM task is from `../design/natcomm-thumbnail-options-20261119/assets/`.
+The approved layout is shown in
+`../design/natcomm-task-pair-schematic-20261123/web-mobile.png`.
 
 News is managed in `content/news.json` and appears before Publications. Each item
 has `date` (`YYYY-MM`) and `text`, with an optional `link` containing `label` and
-`url`. Items sort newest first. The latest three are visible; older items appear
+`url`. Journal names in an optional `journal_titles` array are rendered in italics
+using `<cite>`; the source text stays plain text. Items sort newest first.
+The latest three are visible; older items appear
 under a native Show more / Show less disclosure with a chevron. The control is
 omitted when there are three or fewer items. Use only confirmed dates and facts.
 Beyond research uses `activity_icons` with `after` and `symbol` to place one small

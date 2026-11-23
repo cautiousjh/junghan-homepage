@@ -78,6 +78,15 @@ h2 { font-size:26px; font-weight:500; line-height:1.3; letter-spacing:-.45px; ma
 .publication-study-image svg { display:block; width:100%; height:100%; }
 .publication-study-image .progressive-image { width:100%; height:100%; }
 .publication-study-image img { display:block; width:100%; height:100%; object-fit:contain; }
+.publication.has-thumbnail.has-task-pair { grid-template-columns:minmax(0,1fr) 280px; }
+.publication-task-pair { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; width:100%; }
+.publication-task-image { display:flex; align-items:center; justify-content:center; min-width:0; width:100%; height:92px; background:#fff; }
+.publication-task-image svg { display:block; width:100%; height:100%; }
+.publication-task-image .progressive-image { width:100%; height:100%; }
+.publication-task-image img { display:block; width:100%; height:100%; object-fit:contain; }
+.publication-task-schematic { grid-column:1/-1; height:auto; }
+.publication-task-schematic .progressive-image { height:auto; }
+.publication-task-schematic img { height:auto; }
 .publication:last-child { border-bottom:0; }
 .publication-year { font-size:13px; color:var(--muted); padding-top:3px; font-variant-numeric:tabular-nums; }
 .publication-year.forthcoming { color:var(--accent); }
@@ -226,6 +235,11 @@ h2 { font-size:26px; font-weight:500; line-height:1.3; letter-spacing:-.45px; ma
  .site-footer { margin-inline:20px; flex-wrap:wrap; gap:4px 16px; }
 }
 @media(max-width:760px) {
+ .publication.has-thumbnail.has-task-pair { grid-template-columns:minmax(0,1fr); row-gap:18px; }
+ .publication.has-task-pair .publication-visual { width:100%; max-width:400px; justify-self:center; }
+ .publication-task-pair { gap:16px 12px; }
+ .publication-task-image { height:108px; }
+ .publication-task-schematic { height:auto; grid-row:1; }
  .publication.has-thumbnail.has-study-grid { grid-template-columns:minmax(0,1fr); row-gap:18px; }
  .publication.has-study-grid .publication-main { display:contents; }
  .publication.has-study-grid article { grid-column:1; grid-row:1; }

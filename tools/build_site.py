@@ -66,6 +66,9 @@ def render_news(items):
         if item.get('link'):
             target = e(item['link']['label'])
             text = text.replace(target, link(item['link']), 1)
+        for journal in item.get('journal_titles', []):
+            journal = e(journal)
+            text = text.replace(journal, f'<cite>{journal}</cite>')
         entries.append(f'<li><time datetime="{e(item["date"])}">{label}</time><p>{text}</p></li>')
     body = '<ul class="news-list" role="list">' + ''.join(entries[:3]) + '</ul>'
     if len(entries) > 3:
@@ -124,7 +127,7 @@ def render_paper(p):
     article = f'''<article>{year if has_thumbnail else ''}<h3>{title}</h3><p class="authors">{author_text}</p>
         <p class="venue"><cite>{e(p['venue'])}</cite>{details}</p>{links}</article>'''
     if p.get('overview_figure'):
-        classes += ' has-overview'
+        classes += ' has-task-pair' if p.get('figure_layout') == 'task-pair' else ' has-overview'
         overview = p['overview_figure']
         image = progressive_image(overview['path'], overview['alt'], overview['width'], overview['height'])
         if p['links']:
@@ -138,7 +141,13 @@ def render_paper(p):
                 companions.append(f'<a class="publication-companion" href="{e(p["links"][0]["url"])}" target="_blank" rel="noopener noreferrer">{image}</a>')
             else:
                 companions.append(f'<div class="publication-companion">{image}</div>')
-        if p.get('figure_layout') == 'study-grid':
+        if p.get('figure_layout') == 'task-pair':
+            if len(p.get('figures', [])) != 2:
+                raise ValueError('The task-pair layout requires two task figures.')
+            task_images = [t.replace('publication-thumbnail', 'publication-task-image') for t in thumbnails]
+            scheme = overview_html.replace('publication-overview', 'publication-task-image publication-task-schematic')
+            visual = '<div class="publication-visual"><div class="publication-task-pair">' + ''.join(task_images) + scheme + '</div></div>'
+        elif p.get('figure_layout') == 'study-grid':
             if len(p.get('figures', [])) != 2 or len(companions) != 2:
                 raise ValueError('The study grid requires two original and two companion figures.')
             classes += ' has-study-grid'

@@ -25,6 +25,13 @@
     ],
     "figures": [
       {
+        "thumbnail": "/assets/images/publications/training-em-task.png",
+        "full": "/assets/images/publications/training-em-task.png",
+        "width": 611,
+        "height": 344,
+        "alt": "Episodic memory task used to test transfer from navigation training"
+      },
+      {
         "thumbnail": "/assets/images/publications/training-study.png",
         "full": "/assets/images/publications/training-study.png",
         "width": 1378,
@@ -36,27 +43,6 @@
           176
         ],
         "alt": "Virtual navigation task used for spatial memory training"
-      },
-      {
-        "thumbnail": "/assets/images/publications/training-brain.png",
-        "full": "/assets/images/publications/training-brain.png",
-        "width": 1327,
-        "height": 785,
-        "crop": [
-          615,
-          75,
-          465,
-          295
-        ],
-        "alt": "Hippocampal subfields and retrieval-related maps from the navigation-training study",
-        "mask_rects": [
-          [
-            615,
-            330,
-            45,
-            40
-          ]
-        ]
       }
     ],
     "overview_figure": {
@@ -65,21 +51,7 @@
       "height": 632,
       "alt": "Navigation training overview: pre-training assessment, two weeks of online training with an active control group, and post-training assessment"
     },
-    "companion_figures": [
-      {
-        "path": "/assets/images/publications/training-em-task.png",
-        "width": 611,
-        "height": 344,
-        "alt": "Episodic memory task used to test transfer from navigation training"
-      },
-      {
-        "path": "/assets/images/publications/training-whole-brain.png",
-        "width": 1050,
-        "height": 627,
-        "alt": "Training-related brain activation: coronal and sagittal views with the original F color scale"
-      }
-    ],
-    "figure_layout": "study-grid"
+    "figure_layout": "task-pair"
   },
   {
     "id": "spatial-boundary-structures",
