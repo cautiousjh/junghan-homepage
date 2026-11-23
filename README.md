@@ -89,6 +89,8 @@ Add a publication by copying an object in `content/publications.json`. Display
 order follows the file. Set `self: true` to emphasize the owner's name and
 `equal: true` for equal contributions. Include only real, public links; an
 empty links array is appropriate for an in-press paper without a public URL.
+Optional `title_break_after` repeats the opening phrase where a desktop-only
+line break should appear. At 760px and below, titles wrap naturally.
 The `figures` array adds a 180px thumbnail column to the right of the citation. Each entry has `thumbnail`,
 `full`, `width`, `height`, and `alt`. Optional `crop: [x, y, width, height]`
 selects a displayed region through an SVG viewBox and clipPath without editing the PNG.
@@ -102,7 +104,7 @@ figures keep the compact year column. Legacy `image` / `image_alt` still work.
 On narrow screens, a single figure is centered below the citation.
 
 The Nature Communications paper uses `figure_layout: "task-pair"`. The citation
-stays in the left column. Its 280px right column contains the EM and navigation
+stays in the left column. Its 300px right column contains the EM and navigation
 tasks side by side, with the training schematic below them. At 760px and below,
 the schematic is shown first, followed by the two tasks side by side. The group
 is capped at 400px on wider mobile/tablet screens. `figures` contains the two

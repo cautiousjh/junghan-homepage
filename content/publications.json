@@ -51,7 +51,8 @@
       "height": 632,
       "alt": "Navigation training overview: pre-training assessment, two weeks of online training with an active control group, and post-training assessment"
     },
-    "figure_layout": "task-pair"
+    "figure_layout": "task-pair",
+    "title_break_after": "A spatiotemporal scaffold in the human subiculum supports"
   },
   {
     "id": "spatial-boundary-structures",
@@ -100,7 +101,8 @@
         ],
         "alt": "Encoding-related brain activity and boundary-related connectivity in the user and non-user groups"
       }
-    ]
+    ],
+    "title_break_after": "The visual scene network and hippocampus represent"
   },
   {
     "id": "anterior-thalamus",
@@ -193,7 +195,8 @@
         ],
         "alt": "fNIRS channel maps and regional effects during delay and decision phases of working memory"
       }
-    ]
+    ],
+    "title_break_after": "Wearable functional near-infrared spectroscopy for measuring"
   },
   {
     "id": "macaque-memory-replay",

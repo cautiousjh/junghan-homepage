@@ -86,10 +86,17 @@ def render_paper(p):
             name += '<sup aria-label="equal contribution">*</sup>'
         authors.append(name)
     author_text = ', '.join(authors[:-1]) + ', &amp; ' + authors[-1] if len(authors) > 2 else ' &amp; '.join(authors)
-    title = e(p['title'])
+    label = e(p['title'])
     if p['links']:
         beginning, separator, last_word = p['title'].rpartition(' ')
         label = e(beginning + separator) + f'<span class="paper-title-tail">{e(last_word)}{link_icon("paper-title-icon", 14)}</span>'
+    if p.get('title_break_after'):
+        prefix = p['title_break_after'] + ' '
+        if not p['title'].startswith(prefix):
+            raise ValueError(f'Title break must match the start of the title: {p["id"]}')
+        label = label.replace(e(prefix), e(prefix.rstrip()) + '<br class="paper-title-break"> ', 1)
+    title = label
+    if p['links']:
         title = link({'url': p['links'][0]['url'], 'label': p['title']}).replace(e(p['title']) + '</a>', label + '</a>')
     links = ''.join(link(x, 'paper-link') for x in p['links'][1:])
     links = f'<div class="paper-links">{links}</div>' if links else ''
